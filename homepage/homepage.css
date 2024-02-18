@@ -38,9 +38,9 @@ html{
 .navbar .left img:hover{
     cursor: pointer;
 }
-.right{
+.navbar .right{
     display: flex;
-    gap: 30px;
+    gap: 35px;
     align-items: center;
 }
 .searchbox{
@@ -106,43 +106,39 @@ html{
 }
 .about{
     background-color: #ffe9b8;
-    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 100%;
     display: flex;
+    align-items: center;
 }
 .about .left{
-    width: 40%;
+    width: 50%;
 }
 .about .right{
-    width: 60%;
+    width: 50%;
 }
 .about .heading{
+    margin: 0px 200px;
+    min-height: 100vh;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    margin-left: 100px;
-    margin-right: 350px;
 }
 .about .heading h1{
-    margin-left: 40px;
-    margin-top: 250px;
+    margin-top: 150px;
     font-size: 80px;
 }
 .about .heading h3{
-    margin-left: 40px;
-    font-size: 80px;
+    font-size: 60px;
     color: green;
 }
 .about .heading p{
-    margin-left: 40px;
     font-family: sans-serif;
     font-weight: 700;
     margin-bottom: 30px;
     font-size: 25px;
 }
-.about .right .logoimg{
-    margin-top: -165px;
-}
 .shopbtn button{
-    margin-left: 40px;
     width: 250px;
     height: 60px;
     font-size: 30px;
@@ -200,11 +196,14 @@ html{
     margin-left: 125px;
 }
 .slideshow .fade .caption{
-    font-size: 22px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 600;
 }
 .slideshow .fade img{
     width: 94%;
-    height: 83vh;
+    height: auto;
     border-radius: 15px;
     margin-bottom: 10px;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
@@ -352,7 +351,9 @@ html{
 }
 .footer .left,
 .footer .right {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .footer .left a,
 .footer .right a {
@@ -382,193 +383,119 @@ html{
     color: #777;
 }
 @media only screen and (max-width: 2560px) {
-    .about .heading{
-        margin-top: 300px;
-    }
-    .about{
-        gap: 250px;
-    }
-}
-@media only screen and (max-width: 1440px) {
-    .about .left{
-        width: 50%;
-    }
-    .about .heading{
-        margin-left: -100px;
-        margin-top: -40px;
-    }
     .about .right img{
-        width: 600px;
-        margin-left: -400px;
+        margin-left: 200px;
+        margin-top: -100px;
     }
-    .templates1 ,.templates2, .templates3, .templates4, .templates5{
-        width: 300px;
+    .about .heading{
+        margin-top: -100px;
     }
-    .templates1 img,.templates2 img, .templates3 img, .templates4 img, .templates5 img{
-        width: 250px;
-        height: 250px;
-    }
-    .des1 , .des2 , .des3{
-        margin-bottom: 20px;
-    }
-    .description .container img{
-        width: 300px;
-        height: 200px;
-    }
-    .footer .container{
-        margin: 0px 300px;
+}@media only screen and (max-width: 1440px) {
+    html {
+      width: 100%;
     }
     
-@media only screen and (max-width: 1024px) {
-    .navbar .left{
-        margin-left: 0px;
+    .about .left,
+    .about .right {
+      width: 50%;
     }
-    .navbar .searchbox input{
-        width: 600px;
+    
+    .about .heading h1 {
+      font-size: 3.5rem;
     }
-    .about .heading h1{
-        font-size: 60px;
+    
+    .about .heading h3 {
+      font-size: 2.5rem;
     }
-    .about .heading h3{
-        font-size: 35px;
+    
+    .about .heading p {
+      font-size: 1.25rem;
     }
-    .about .heading p{
-        font-size: 20px;
+    
+    .about .heading .shopbtn button {
+      width: 12rem;
+      height: 3rem;
+      font-size: 1.5rem;
     }
-    .about .heading .shopbtn button{
-        width: 200px;
-        height: 50px;
-        font-size: 25px;
+    
+    .templates1,
+    .templates2,
+    .templates3,
+    .templates4,
+    .templates5 {
+      width: 33.333%;
     }
-    .about .heading{
-        margin-left: -100px;
-        margin-top: 40px;
+    
+    .templates1 img,
+    .templates2 img,
+    .templates3 img,
+    .templates4 img,
+    .templates5 img {
+      width: 100%;
+      height: auto;
     }
-    .about .right img{
-        width: 450px;
-        margin-left: -500px;
+    
+    .templates1 button,
+    .templates2 button,
+    .templates3 button,
+    .templates4 button,
+    .templates5 button {
+      width: 100%;
+      font-size: 1.25rem;
     }
-    .templates1 ,.templates2, .templates3, .templates4, .templates5{
-        width: 250px;
+    
+    .description .container img {
+      width: 100%;
+      height: auto;
     }
-    .templates1 img,.templates2 img, .templates3 img, .templates4 img, .templates5 img{
-        width: 200px;
-        height: 200px;
+    
+    .footer .container {
+      margin: 0 auto;
+      max-width: 90%;
     }
-    .des1 , .des2 , .des3{
-        margin-bottom: 20px;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .about .left {
+      width: 100%;
     }
-    .description .container img{
-        width: 300px;
-        height: 200px;
+    
+    .about .right {
+      width: 100%;
     }
-    .footer .container{
-        margin: 0px 200px;
+    
+    .about .heading h1 {
+      font-size: 3rem;
     }
-}
-@media only screen and (max-width: 768px) {
-    .navbar .left{
-        margin-left: 0px;
+    
+    .about .heading h3 {
+      font-size: 2rem;
     }
-    .navbar .searchbox input{
-        width: 400px;
+    
+    .about .heading p {
+      font-size: 1.25rem;
     }
-    .about .heading h1{
-        font-size: 50px;
+    
+    .about .heading .shopbtn button {
+      width: 10rem;
+      height: 2.5rem;
+      font-size: 1.25rem;
     }
-    .about .heading h3{
-        font-size: 25px;
+    
+    .templates1,
+    .templates2,
+    .templates3,
+    .templates4,
+    .templates5 {
+      width: 100%;
     }
-    .about .heading p{
-        font-size: 18px;
+    
+    .templates1 img,
+    .templates2 img,
+    .templates3 img,
+    .templates4 img,
+    .templates5 img {
+      width: 100%;
+      height: auto;
     }
-    .about .heading .shopbtn button{
-        width: 150px;
-        height: 40px;
-        font-size: 20px;
-    }
-    .about .heading{
-        margin-left: -200px;
-        margin-top: 80px;
-    }
-    .about .right img{
-        margin-top: 100px;
-        width: 350px;
-        margin-left: -550px;
-    }
-    .slideshow .fade img{
-        width: 94%;
-        height: 60vh;
-    }
-    .templates1 ,.templates2, .templates3, .templates4, .templates5{
-        width: 250px;
-    }
-    .templates1 img,.templates2 img, .templates3 img, .templates4 img, .templates5 img{
-        width: 200px;
-        height: 200px;
-    }
-    .des1 , .des2 , .des3{
-        margin-bottom: 20px;
-    }
-    .description .container img{
-        width: 300px;
-        height: 200px;
-    }
-    .footer .container{
-        margin: 0px 100px;
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .navbar .left{
-        margin-left: 0px;
-    }
-    .navbar .searchbox input{
-        width: 300px;
-    }
-    .about .heading h1{
-        font-size: 50px;
-    }
-    .about .heading h3{
-        font-size: 25px;
-    }
-    .about .heading p{
-        font-size: 18px;
-    }
-    .about .heading .shopbtn button{
-        width: 150px;
-        height: 40px;
-        font-size: 20px;
-    }
-    .about .heading{
-        margin-left: -200px;
-        margin-top: 80px;
-    }
-    .about .right img{
-        margin-top: 100px;
-        width: 350px;
-        margin-left: -550px;
-    }
-    .slideshow .fade img{
-        width: 94%;
-        height: 60vh;
-    }
-    .templates1 ,.templates2, .templates3, .templates4, .templates5{
-        width: 250px;
-    }
-    .templates1 img,.templates2 img, .templates3 img, .templates4 img, .templates5 img{
-        width: 200px;
-        height: 200px;
-    }
-    .des1 , .des2 , .des3{
-        margin-bottom: 20px;
-    }
-    .description .container img{
-        width: 300px;
-        height: 200px;
-    }
-    .footer .container{
-        margin: 0px 100px;
-    }
-}
-}
+}  
