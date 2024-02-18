@@ -3,45 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shahi Paneer Recipe</title>
-    <link rel="stylesheet" href="recipe.css">
+    <title>Shahi Paneer - Home Leaf</title>
+    <link rel="stylesheet" href="sub-recipes.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href= "../images/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <h1>Shahi Paneer Recipe</h1>
-    </header>
-    
-    <main>
-        <img src="https://myfoodstory.com/wp-content/uploads/2022/04/Shahi-Paneer-1.jpg" alt="Shahi Paneer">
-        <h2>Ingredients</h2>
-        <ul>
-            <li>200g paneer (cottage cheese), cubed</li>
-            <li>1 cup onion, finely chopped</li>
-            <li>1 cup tomato, pureed</li>
-            <li>1/4 cup cashews, soaked</li>
-            <li>1/4 cup fresh cream</li>
-            <li>1/4 cup ghee or butter</li>
-            <li>1 teaspoon ginger-garlic paste</li>
-            <li>1/2 teaspoon turmeric powder</li>
-            <li>1 teaspoon red chili powder</li>
-            <li>1 teaspoon garam masala</li>
-            <li>1 teaspoon kasuri methi (dried fenugreek leaves)</li>
-            <li>Salt to taste</li>
-            <li>Fresh coriander leaves for garnish</li>
-        </ul>
 
-        <h2>Instructions</h2>
-        <ol>
-            <li>In a pan, heat ghee or butter and sauté finely chopped onions until golden brown.</li>
-            <li>Add ginger-garlic paste and sauté for a minute.</li>
-            <li>Blend soaked cashews into a smooth paste and add it to the pan.</li>
-            <li>Stir in turmeric powder, red chili powder, and garam masala. Cook until the oil separates.</li>
-            <li>Add tomato puree and cook until the masala is well-cooked and oil starts to separate.</li>
-            <li>Add cubed paneer and mix well. Cook for 2-3 minutes.</li>
-            <li>Pour fresh cream and mix gently. Adjust salt according to taste.</li>
-            <li>Crush kasuri methi between your palms and sprinkle over the shahi paneer.</li>
-            <li>Garnish with fresh coriander leaves and serve hot.</li>
-        </ol>
-    </main>
+    <div class="scroll-up-btn show">
+        <i class='bx bx-chevron-up'></i>
+    </div>
+
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="left">
+                <div class="logo">
+                    <a href="../homepage/homepage.html"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
+                </div>
+            </div>
+            <div class="searchbox"> 
+                <i class='bx bx-search' ></i>      
+                <input placeholder="Search for groceries" class="desktop-searchBar" value=""
+                data-reactid="904">
+            </div>
+            <div class="right">
+                <div class="cart">
+                    <a href="../cart/cart.html"><i class='bx bx-cart'></i></a>
+                </div>
+                <div class="user">
+                    <i class='bx bx-user-circle'></i>
+                    <a href="../user/user.html"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="recipe-name">
+        <h1>Shahi Paneer Recipe</h1>
+    </div>
+    <div class="recipe-container">
+        <img src="https://myfoodstory.com/wp-content/uploads/2022/04/Shahi-Paneer-1.jpg" draggable="false">
+        <div class="content">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>200g paneer (cottage cheese), cubed</li>
+                <li>1 cup onion, finely chopped</li>
+                <li>1 cup tomato, pureed</li>
+                <li>1/4 cup cashews, soaked</li>
+                <li>1/4 cup fresh cream</li>
+                <li>1/4 cup ghee or butter</li>
+                <li>1 teaspoon ginger-garlic paste</li>
+                <li>1/2 teaspoon turmeric powder</li>
+                <li>1 teaspoon red chili powder</li>
+                <li>1 teaspoon garam masala</li>
+                <li>1 teaspoon kasuri methi (dried fenugreek leaves)</li>
+                <li>Salt to taste</li>
+                <li>Fresh coriander leaves for garnish</li>
+            </ul>
+            <h2>Instructions</h2>
+            <ol>
+                <li>In a pan, heat ghee or butter and sauté finely chopped onions until golden brown.</li>
+                <li>Add ginger-garlic paste and sauté for a minute.</li>
+                <li>Blend soaked cashews into a smooth paste and add it to the pan.</li>
+                <li>Stir in turmeric powder, red chili powder, and garam masala. Cook until the oil separates.</li>
+                <li>Add tomato puree and cook until the masala is well-cooked and oil starts to separate.</li>
+                <li>Add cubed paneer and mix well. Cook for 2-3 minutes.</li>
+                <li>Pour fresh cream and mix gently. Adjust salt according to taste.</li>
+                <li>Crush kasuri methi between your palms and sprinkle over the shahi paneer.</li>
+                <li>Garnish with fresh coriander leaves and serve hot.</li>
+            </ol>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer">
+            <div class="heading">
+                <img src="../images/Logo.png" alt="Logo">
+                <h1>Home Leaf</h1>
+            </div>
+            <div class="container">
+                <div class="left">
+                    <a href="../homepage/homepage.html">About Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms And Conditions</a>
+                    <a href="../contact/contact.html">Contact Us</a>
+                    <a href="../faqs/FAQ.html">FAQs</a>
+                </div>
+                <div class="right">
+                    <a href="https://www.instagram.com/home._.leaf/" target="_blank"><i class="bx bxl-instagram"></i> Instagram</a>
+                    <a href="#"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Home Leaf - All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
+<script src="sub-recipes.js"></script>
