@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions</title>
+    <link rel="stylesheet" href="rate.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        body {
+          background-image: url('images/sug.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          margin-top: 320px;
+          margin-left: 275px;
+          background-size: 100% 150%;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Home Leaf</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1 data-aos="fade-down">We appreciate your suggestions!</h1>
+            <form action="/submit-suggestion" method="post" data-aos="fade-up">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (optional):</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="suggestion">Your Suggestion:</label>
+                    <textarea id="suggestion" name="suggestion" rows="4" cols="50" required></textarea>
+                </div>
+                <button type="submit" class="button">Submit Suggestion</button>
+            </form>
+        </div>
+        
+    </div>
+    <footer>
+        <p>&copy; Company Name 2023. All Rights Reserved.</p>
+    </footer>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

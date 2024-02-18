@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.recipe-card {
+  width: 300px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.recipe-card h3 {
+  margin-top: 15px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.recipe-card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.recipe-card button {
+  padding: 10px 20px;
+  background-color: #48b839;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.recipe-card button:hover {
+  background-color: #3a9834;
+}
+/* ... Existing CSS styles ... */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  zoom: 125%; /* Set the default zoom level to 75% */
+}
+
+.page-header {
+  text-align: center;
+  padding: 20px;
+  background-color: transparent;
+  color: #e59037;
+}
+
+.page-header h1 {
+  font-size: 2em;
+}
+
+.recipes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.recipe-card {
+  width: 300px;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.recipe-card h3 {
+  margin-top: 15px;
+  color: #e59037;
+  font-size: 1.5em;
+}
+
+.recipe-card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.recipe-card button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #e59037;
+  border: 1px solid #e59037;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.recipe-card button:hover {
+  background-color: #e59037;
+  color: #fff;
+}

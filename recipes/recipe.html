@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="recipe.js" defer></script>
+</head>
+<body>
+    <header class="page-header">
+        <h1>Explore Delicious Recipes</h1>
+    </header>
+    
+    <main class="recipes-container">
+        <div class="recipe-card">
+            <img src="biryani.jpg" alt="Cheese Pizza">
+            <h3>Cheese Pizza</h3>
+            <p>Fragrant and flavorful Cheese Pizza with fresh veggies and cheese.</p>
+            <a href="pizza.html"><button>Let's Make It</button></a>
+        </div>
+
+        <div class="recipe-card">
+            <img src="paneer-tikka.jpg" alt="Shahi Paneer">
+            <h3>Shahi Paneer</h3>   
+            <p>Rich and creamy Shahi Paneer with aromatic spices.</p>
+            <button onclick="redirectToRecipe('paneer.html')">Let's Make It</button>
+        </div>
+
+        <div class="recipe-card">
+            <img src="dal-makhani.jpg" alt="Sandwich">
+            <h3>Sandwich</h3>
+            <p>Freshly and crispy toasts ready in minutes.</p>
+            <button onclick="redirectToRecipe('sandwich.html')">Let's Make It</button>
+        </div>
+
+        <div class="recipe-card">
+            <img src="samosa.jpg" alt="Pasta">
+            <h3>Pasta</h3>
+            <p>Mouth-savoring Pasta, ready in minutes for your taste buds.</p>
+            <button onclick="redirectToRecipe('pasta.html')">Let's Make It</button>
+        </div>
+
+        <div class="recipe-card">
+            <img src="samosa.jpg" alt="Samosa">
+            <h3>Samosa</h3>
+            <p>Crunchy and flavorful Samosa with a delightful filling.</p>
+            <button onclick="redirectToRecipe('samosa.html')">Let's Make It</button>
+        </div>
+    </main>
+</body>
+</html>
