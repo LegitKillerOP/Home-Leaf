@@ -1,4 +1,5 @@
-$('.searchicon').click(function(){
-    $('.searchicon').toggleClass('active');
-    $('.searchbox').toggle();
-});
+
+$('.scroll-up-btn').click(function(){
+    $('html, body').animate({scrollTop : 0},800);
+    return false;
+  });
