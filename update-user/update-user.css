@@ -20,6 +20,7 @@ body,html{
 ::-webkit-scrollbar-thumb {
     background: #888;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
@@ -53,7 +54,7 @@ body,html{
 }
 .navbar .left img:hover{
     cursor: pointer;
-  }
+}
 .navbar .right{
     display: flex;
     gap: 35px;
@@ -85,7 +86,7 @@ body,html{
     font-size: 45px;
     color: #000;
 }
-  .right i:hover{
+.right i:hover{
     cursor: pointer;
 }
 .scroll-up-btn{
@@ -115,7 +116,16 @@ body,html{
 .scroll-up-btn:hover{
     filter: brightness(90%);
 }
-.recipe-name h1{
+
+.edit-profile {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.edit-profile h1{
     border-bottom: 1px solid #3e4152;
     width: 100%;
     overflow: hidden;
@@ -124,37 +134,72 @@ body,html{
     color: #3e4152;
     letter-spacing: .15em;
     font-size: 1.8em;
-    margin: 50px 0 10px 0px;
+    margin: 0px 0 40px 0px;
     max-height: 5em;
     font-weight: 700;
     text-align: center;
 }
-.recipe-container{
-    display: flex;
+.edit-profile .container {
     justify-content: space-around;
-    align-items: center;
-}
-.recipe-container img{
-    margin: 20px;
-    border-radius: 15px;
-    width: 750px;
-    height: 500px;
-}
-.recipe-container .content{
-    margin: 20px 0px;
-}
-.recipe-container .content h2{
-    margin: 20px 0px;
-    border-bottom: 1px solid #3e4152;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    color: #3e4152;
-    letter-spacing: .15em;
-    font-size: 1.8em;
-    font-weight: 700;
+    display: flex;
+    width: 90%;
+    max-width: 80%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+.edit-profile h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #666;
+}
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="file"],
+input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="file"]:focus {
+    border-color: #007bff;
+}
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.invalid-feedback {
+    color: #dc3545;
+    text-align: left;
+    margin-top: 5px;
 }
 
 .footer {
@@ -211,15 +256,6 @@ body,html{
     font-size: 14px;
     color: #777;
 }
-@media only screen and (max-width: 1440px) {
-    .recipe-container img{
-        width: 600px;
-        height: 400px;
-    }
-    .footer .container{
-        margin: 0px 300px;
-    }
-}
 @media only screen and (max-width: 1024px) {
     .navbar .left{
         margin-left: 0px;
@@ -227,36 +263,22 @@ body,html{
     .navbar .searchbox input{
         width: 600px;
     }
-    .recipe-container{
-        flex-direction: column;
-    }
-    .recipe-container img{
-        width: 600px;
-        height: 400px;
-    }
     .footer .container{
         margin: 0px 200px;
     }
-  }
-  @media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 768px) {
     .navbar .left{
         margin-left: 0px;
     }
     .navbar .searchbox input{
         width: 400px;
     }
-    .recipe-container img{
-        width: 400px;
-        height: 250px;
-    }
-    .recipe-container .content{
-        margin: 20px 60px;
-    }
     .footer .container{
         margin: 0px 200px;
     }
-  }
-  @media only screen and (max-width: 425px) {
+}
+@media only screen and (max-width: 425px) {
     .navbar{
         height: 60px;
     }
@@ -284,4 +306,4 @@ body,html{
     .footer .container{
         margin: 0px 20px;
     }
-  }
+}

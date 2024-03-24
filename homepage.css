@@ -48,11 +48,16 @@ body,html{
 }
 .navbar .left a{
     font-size: 40px;
+    transition: color 0.3s, transform 0.3s;
 }
 .navbar .left img{
     width: 90px;
+    transition: color 0.3s, transform 0.3s;
 }
-.navbar .left img:hover{
+.navbar .left a:hover,
+.navbar .left img:hover,
+.navbar .right i:hover {
+    transform: scale(1.1);
     cursor: pointer;
 }
 .navbar .right{
@@ -85,6 +90,7 @@ body,html{
 .right i{
     font-size: 45px;
     color: #000;
+    transition: color 0.3s, transform 0.3s;
 }
 .right i:hover{
     cursor: pointer;
@@ -278,11 +284,14 @@ body,html{
     from {opacity: .4} 
     to {opacity: 1}
 }
-.recipes{
-    margin: 50px;
-    justify-content: space-around;
+.best-seller {
+    padding: 30px 0;
 }
-.recipes .heading h1{
+.best-seller .heading {
+    text-align: center;
+    margin-top: 30px;
+}
+.best-seller .heading h1 {
     border-bottom: 1px solid #3e4152;
     width: 100%;
     overflow: hidden;
@@ -296,64 +305,72 @@ body,html{
     font-weight: 700;
     text-align: center;
 }
-.recipes .container{
-    margin: 60px 0;
-}
-.recipes .container .content p{
-    margin-left: 40px;
-    margin-bottom: 30px;
-    font-size: 22px;
-    font-weight: 500;
-    text-align: center;
-}
-.recipes .container .templates{
-    justify-content: space-around;
+.best-seller .card-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: auto;
+    justify-content: center;
 }
-.templates1 ,.templates2, .templates3, .templates4, .templates5{
-    border: 1px  solid #e59037;
-    border-radius: 10px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.best-seller .card {
+    width: 300px;
+    margin: 0 15px 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.templates1:hover ,.templates2:hover, .templates3:hover, .templates4:hover, .templates5:hover{
-    cursor: pointer;
-    transform: scale(1.02);
-    transition: all 0.4ms;
+.best-seller .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
-.templates1 img ,.templates2 img , .templates3 img , .templates4 img, .templates5 img{
-    width: 300px ;
-    height: 300px;
-    margin: 20px 0px 0px;
-    border-radius: 10px;
+.best-seller .card-img {
+    width: 300px;
+    height: 450px;
+    overflow: hidden;
 }
-.templates1 p ,.templates2 p , .templates3 p , .templates4 p, .templates5 p{
-    font-size: 20px;
-    margin: 10px;
-    font-family: 'Times New Roman';
+.best-seller .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-.templates1 button,.templates2 button, .templates3 button , .templates4 button, .templates5 button{
-    margin: 10px;
-    width: 200px;
-    height: 45px;
-    font-size: 20px;
-    font-family: sans-serif;
-    background-color: #e59037;
+.best-seller .item-details {
+    padding: 15px;
+}
+.best-seller .item-details .item-name h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.best-seller .price p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+.amount {
+    margin-bottom: 10px;
+}
+.amount label {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+}
+.amount select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #555;
+    width: 120px;
+}
+.cart-btn button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 10px;
-    color: #fff;
-}
-.templates1 button:hover,.templates2 button:hover, .templates3 button:hover , .templates4 button:hover, .templates5 button:hover{
+    border-radius: 4px;
     cursor: pointer;
-    background-color: transparent;
-    border: 2px solid #e59037;
-    color: #e59037;
-    transition: all 0.3s;   
+    transition: background-color 0.3s;
+}
+.cart-btn button:hover {
+    background-color: #45a049;
 }
 .description{
     margin-bottom: 40px;
@@ -653,7 +670,7 @@ body,html{
         font-size: 35px;
     }
     .sidebar .sidebar-link{
-        width: 90px;
+        width: 70px;
     }
     .about .heading{
         margin-top: -150px;
@@ -661,6 +678,7 @@ body,html{
         margin-left: 10px;
     }
     .about .heading h1{
+        margin-top: 150px;
         font-size: 30px;
     }
     .about .heading h3{
@@ -675,7 +693,7 @@ body,html{
         font-size: 15px;
     }
     .about .right{
-        margin-top: -200px;
+        margin-top: -100px;
         margin-left: -30px;
     }
     .about .right img{
@@ -683,6 +701,9 @@ body,html{
     }
     .slideshow .fade {
         margin-left: 35px;
+    }
+    .details{
+        margin: 10px;
     }
     .recipes{
         margin: 20px;
@@ -700,6 +721,98 @@ body,html{
     .templates1 button,.templates2 button, .templates3 button, .templates4 button, .templates5 button{
         width: 120px;
         font-size: 15px;
+    }
+    .description{
+        margin: 10px;
+    }
+    .description .cards {
+        margin-left: 10px;
+    }
+    .footer .container{
+        margin: 0px 20px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .navbar{
+        height: 60px;
+    }
+    .navbar .left img {
+        width: 60px;
+        margin-left: -15px;
+    }
+    .searchbox i{
+        font-size: 20px;
+        height: 20px;
+    }
+    .navbar .searchbox input{
+        width: 150px;
+    }
+    .searchbox input {
+        font-size: 18px;
+        height: 20px;
+    }
+    .navbar .right{
+        gap: 15px;
+    }
+    .navbar .right i {
+        font-size: 35px;
+    }
+    .sidebar .sidebar-link{
+        width: 50px;
+    }
+    .about .heading{
+        margin-top: -150px;
+        margin-right: 0px;
+        margin-left: 10px;
+    }
+    .about .heading h1{
+        margin-top: 150px;
+        font-size: 30px;
+    }
+    .about .heading h3{
+        font-size: 20px;
+    }
+    .about .heading p{
+        font-size: 16px;
+    }
+    .about .heading .shopbtn button{
+        width: 120px;
+        height: 35px;
+        font-size: 15px;
+    }
+    .about .right{
+        margin-top: -100px;
+        margin-left: 10px;
+    }
+    .about .right img{
+        width: 200px;
+    }
+    .slideshow .fade {
+        margin-left: 35px;
+    }
+    .details{
+        margin: 10px;
+    }
+    .recipes{
+        margin: 20px;
+    }
+    .templates{
+        margin: 20px;
+    }
+    .templates1 ,.templates2, .templates3, .templates4, .templates5{
+        width: 150px;
+    }
+    .templates1 img,.templates2 img, .templates3 img, .templates4 img, .templates5 img{
+        width: 130px;
+        height: 130px;
+    }
+    .templates1 button,.templates2 button, .templates3 button, .templates4 button, .templates5 button{
+        width: 120px;
+        font-size: 15px;
+    }
+    .description{
+        margin: 10px;
     }
     .description .cards {
         margin-left: 10px;

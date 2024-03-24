@@ -1,3 +1,35 @@
+<?php
+// Initialize the session
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+
+// Include config file
+require_once "../config.php";
+
+// Fetch avatar image from the database
+$sql = "SELECT avatar FROM users WHERE id = ?";
+if ($stmt = mysqli_prepare($link, $sql)) {
+    mysqli_stmt_bind_param($stmt, "i", $_SESSION["id"]);
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_store_result($stmt);
+        if (mysqli_stmt_num_rows($stmt) == 1) {
+            mysqli_stmt_bind_result($stmt, $avatar_data);
+            if (mysqli_stmt_fetch($stmt)) {
+                // Output the avatar image data
+                $avatar_image = $avatar_data;
+            }
+        }
+    }
+    mysqli_stmt_close($stmt);
+}
+mysqli_close($link);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,18 +74,29 @@
         <div class="container">
             <div class="left">
                 <div class="pfp">
-                    <img src="../images/default-avatar.png">
+                    <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($avatar_image); ?>" alt="" id="avatar-img" draggable=false>
                     <div class="details">
                         <div class="heading">
                             <h1>Details</h1>
                         </div>
                         <div class="content">
-                            <p>Login to see your details!</p>
+                            <div class="name">
+                                <p>Name</p>   
+                                <h3><?php echo htmlspecialchars($_SESSION["username"]); ?></h3>
+                            </div>
+                            <div class="email">
+                                <p>Email</p>
+                                <h4><?php echo htmlspecialchars($_SESSION["email"]); ?></h4>
+                            </div>
+                            <div class="phone">
+                                <p>Phone Number</p>
+                                <h4><?php echo htmlspecialchars($_SESSION["mobile_number"]); ?></h4>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="login-btns">
-                    <a href="../login.php"><button>Sign In</button></a>
+                    <a href="../logout.php"><button>Sign Out</button></a>
                 </div>
             </div>
             <div class="right">
@@ -65,7 +108,7 @@
                     <a href="" style="color: black;">
                     <div class="card1" id="card1">
                         <div class="card-img">
-                            <img src="https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-box-parcel-icon-isometric-vector-png-image_4877724.png" alt="">
+                            <img src="https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-box-parcel-icon-isometric-vector-png-image_4877724.png" alt="" draggable=false>
                         </div>
                         <div class="content">
                             <h3>Your Order</h3>
@@ -77,7 +120,7 @@
                     <a href="../update-user/update-user.php" style="color: black;">
                     <div class="card2" id="card2">
                         <div class="card-img">
-                            <img src="https://www.freeiconspng.com/thumbs/lock-icon/lock-icon-11.png" alt="">
+                            <img src="https://www.freeiconspng.com/thumbs/lock-icon/lock-icon-11.png" alt="" draggable=false>
                         </div>
                         <div class="content"><h3>Account Settings</h3>
                             <p>Update your account information</p>
