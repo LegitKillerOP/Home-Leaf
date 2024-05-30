@@ -1,10 +1,9 @@
 <?php
-// Initialize the session
 session_start();
 
-// Check if the user is already logged in, if yes then redirect him to the welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ../project/user/logined-user.php");
+// Check if the user is already logged in, if yes then redirect him to the cart page
+if(isset($_SESSION["user_id"])) {
+    header("Location: user/logined-user.php");
     exit;
 }
 

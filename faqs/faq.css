@@ -27,32 +27,34 @@ body,html{
 .navbar{
   background-color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   z-index: 9999;
   width: 100%;
-  height: 80px;
+  height: 130px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.navbar .max-width{
+.navbar .container{
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 10px 20px;
+  gap: 40px;
+  margin: 5px 0px;
 }
 .navbar .left{
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 60px;
-}
-.navbar .left a{
-  font-size: 40px;
 }
 .navbar .left img{
-  width: 90px;
+  width: 60px;
+  transition: color 0.3s, transform 0.3s;
 }
-.navbar .left img:hover{
+.navbar .left a:hover,
+.navbar .left img:hover,
+.navbar .right i:hover {
+  transform: scale(1.1);
   cursor: pointer;
 }
 .navbar .right{
@@ -60,35 +62,84 @@ body,html{
   gap: 35px;
   align-items: center;
 }
-.searchbox{
-  display: flex;
-}
-.searchbox i{
-  font-size: 30px;
-  height: 40px;
-  padding: 8px 10px 10px;
-  outline: 0;
-  border: none;
-  background: rgb(237, 237, 237)
-}
 .searchbox input {
-  font-size: 20px;
-  height: 40px;
-  line-height: 24px;
-  width: 800px;
-  color: #000;
-  padding: 8px 10px 10px;
-  outline: 0;
-  border: none;
-  background: rgb(237, 237, 237)
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 600px 12px 40px;
 }
 .right i{
-  font-size: 45px;
+  font-size: 30px;
   color: #000;
+  transition: color 0.3s, transform 0.3s;
 }
 .right i:hover{
   cursor: pointer;
 }
+.nav2 .container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+}
+.nav2 .container .others a{
+  color: #000;
+  font-size: 14px;
+}
+.nav2 .container .others a:hover{
+  cursor: pointer;
+  color: rgb(253, 58, 58);
+  text-decoration: underline;
+  text-decoration-color: rgb(253, 58, 58);
+  transition: all  0.3s ease-in-out;
+}.nav2 .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.nav2 .container .dropbtn {
+  background-color: #5e9400;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  width: 180px;
+  text-align: center;
+  border-radius: 5px;
+}
+.nav2 .container .dropdown:hover .dropbtn {
+  background-color: #5e9400;
+}
+.nav2 .container .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #202020;
+  min-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+.nav2 .container .dropdown-content a {
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 18px;
+  text-decoration: none;
+  display: block;
+}
+.nav2 .container .dropdown-content a:hover {
+  background-color: #404040;
+}
+.nav2 .container .dropdown:hover .dropdown-content {
+  display: block;
+}
+
 .scroll-up-btn{
   position: fixed;
   height: 45px;
@@ -116,6 +167,7 @@ body,html{
 .scroll-up-btn:hover{
   filter: brightness(90%);
 }
+
 .faq-heading h1{
   border-bottom: 1px solid #3e4152;
   width: 100%;

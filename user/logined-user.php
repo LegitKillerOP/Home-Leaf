@@ -1,34 +1,16 @@
 <?php
-// Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
+// Check if the user is logged in
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
+    header("location: ../login.php");
     exit;
 }
 
-// Include config file
 require_once "../config.php";
 
-// Fetch avatar image from the database
-$sql = "SELECT avatar FROM users WHERE id = ?";
-if ($stmt = mysqli_prepare($link, $sql)) {
-    mysqli_stmt_bind_param($stmt, "i", $_SESSION["id"]);
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_store_result($stmt);
-        if (mysqli_stmt_num_rows($stmt) == 1) {
-            mysqli_stmt_bind_result($stmt, $avatar_data);
-            if (mysqli_stmt_fetch($stmt)) {
-                // Output the avatar image data
-                $avatar_image = $avatar_data;
-            }
-        }
-    }
-    mysqli_stmt_close($stmt);
-}
-mysqli_close($link);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,23 +30,50 @@ mysqli_close($link);
     </div>
 
     <nav class="navbar">
-        <div class="max-width">
+        <div class="container">
             <div class="left">
                 <div class="logo">
                     <a href="../index.php"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
                 </div>
             </div>
-            <div class="searchbox"> 
-                <i class='bx bx-search' ></i>      
+            <div class="searchbox">   
                 <input placeholder="Search for groceries" class="desktop-searchBar" value=""
                 data-reactid="904">
             </div>
             <div class="right">
                 <div class="cart">
-                    <a href="../cart/cart.html"><i class='bx bx-cart'></i></a>
+                    <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../user/user.html"><i class='bx bx-user-circle'></i></a>
+                    <a href="../login.php"><i class='bx bx-user-circle'></i></a>
+                </div>
+            </div>
+        </div><div class="nav2">
+            <div class="container">
+                <div class="dropdown">
+                    <button class="dropbtn">Shop with category ▼</button>
+                    <div class="dropdown-content">
+                        <a href="../fruits-vegitables/fruits-vegitables.html">Fruit & Vegetable</a>
+                        <a href="#">Foodgrains, Oil & Masala</a>
+                        <a href="#">Bakery, Cakes & Dairy</a>
+                        <a href="#">Beverages</a>
+                        <a href="#">Snacks</a>
+                    </div>
+                </div>
+                <div class="others">
+                    <a href="">Exotic Fruits & Veggies</a>
+                </div>
+                <div class="others">
+                    <a href="">Tea</a>
+                </div>
+                <div class="others">
+                    <a href="">Ghee</a>
+                </div>
+                <div class="others">
+                    <a href="">Fresh Vegetables</a>
+                </div>
+                <div class="others">
+                    <a href="">Milk</a>
                 </div>
             </div>
         </div>
@@ -74,14 +83,14 @@ mysqli_close($link);
         <div class="container">
             <div class="left">
                 <div class="pfp">
-                    <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($avatar_image); ?>" alt="" id="avatar-img" draggable=false>
+                    <img src="../images/default-avatar.png" alt="" draggable="false">
                     <div class="details">
                         <div class="heading">
                             <h1>Details</h1>
                         </div>
                         <div class="content">
                             <div class="name">
-                                <p>Name</p>   
+                                <p>Username</p>   
                                 <h3><?php echo htmlspecialchars($_SESSION["username"]); ?></h3>
                             </div>
                             <div class="email">
@@ -92,6 +101,54 @@ mysqli_close($link);
                                 <p>Phone Number</p>
                                 <h4><?php echo htmlspecialchars($_SESSION["mobile_number"]); ?></h4>
                             </div>
+                            
+                            <?php if(isset($_SESSION["loc"]) && !empty($_SESSION["loc"])): ?>
+                                <div class="address">
+                                    <p>Address</p>
+                                    <h4><?php echo htmlspecialchars($_SESSION["loc"]); ?></h4>
+                                </div>
+                            <?php else: ?>
+                                <div class="address">
+                                    <p>Address</p>
+                                    <h4>Add Address</h4>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if(isset($_SESSION["Pincode"]) && !empty($_SESSION["Pincode"])): ?>
+                                <div class="pincode">
+                                    <p>Pincode</p>
+                                    <h4><?php echo htmlspecialchars($_SESSION["Pincode"]); ?></h4>
+                                </div>
+                            <?php else: ?>
+                                <div class="pincode">
+                                    <p>Pincode</p>
+                                    <h4>Add Pincode</h4>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if(isset($_SESSION["City"]) && !empty($_SESSION["City"])): ?>
+                                <div class="city">
+                                    <p>City</p>
+                                    <h4><?php echo htmlspecialchars($_SESSION["City"]); ?></h4>
+                                </div>
+                            <?php else: ?>
+                                <div class="city">
+                                    <p>City</p>
+                                    <h4>Add City</h4>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if(isset($_SESSION["Country"]) && !empty($_SESSION["Country"])): ?>
+                                <div class="Country">
+                                    <p>Country</p>
+                                    <h4><?php echo htmlspecialchars($_SESSION["Country"]); ?></h4>
+                                </div>
+                            <?php else: ?>
+                                <div class="country">
+                                    <p>Country</p>
+                                    <h4>Add Country</h4>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -105,28 +162,52 @@ mysqli_close($link);
                     <p>Your profile preferences help us personalise recommendations for you.</p>
                 </div>
                 <div class="about-you">
+
                     <a href="" style="color: black;">
-                    <div class="card1" id="card1">
-                        <div class="card-img">
-                            <img src="https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-box-parcel-icon-isometric-vector-png-image_4877724.png" alt="" draggable=false>
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-box-parcel-icon-isometric-vector-png-image_4877724.png" alt="" draggable=false>
+                            </div>
+                            <div class="content">
+                                <h3>Your Order</h3>
+                                <p>Track, return or buy things again</p>
+                            </div>
                         </div>
-                        <div class="content">
-                            <h3>Your Order</h3>
-                            <p>Track, return or buy things again</p>
-                        </div>
-                    </div>
                     </a>
                     
-                    <a href="../update-user/update-user.php" style="color: black;">
-                    <div class="card2" id="card2">
-                        <div class="card-img">
-                            <img src="https://www.freeiconspng.com/thumbs/lock-icon/lock-icon-11.png" alt="" draggable=false>
+                    <a href="../update-user/login-security/login-security.php" style="color: black;">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/sign-in-lock._CB485931504_.png" alt="" draggable=false>
+                            </div>
+                            <div class="content"><h3>Login And Security</h3>
+                                <p>Update your account information</p>
+                            </div>
                         </div>
-                        <div class="content"><h3>Account Settings</h3>
-                            <p>Update your account information</p>
-                        </div>
-                    </div>
                     </a>
+                    
+                    <a href="../update-user/your-address/your-address.php" style="color: black;">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="https://m.media-amazon.com/images/G/31/x-locale/cs/ya/images/address-map-pin._CB485934183_.png" alt="" draggable=false>
+                            </div>
+                            <div class="content"><h3>Your Address</h3>
+                                <p>Edit addresses for orders</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="../contact/contact.html" style="color: black;">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="https://m.media-amazon.com/images/G/31/x-locale/cs/help/images/gateway/self-service/contact_us._CB623781998_.png" alt="" draggable=false>
+                            </div>
+                            <div class="content"><h3>Contact Us</h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -143,7 +224,7 @@ mysqli_close($link);
                     <a href="../index.php">About Us</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms And Conditions</a>
-                    <a href="../contact/contact.html">Contact Us</a>
+                    <a href="../contact/contact.php">Contact Us</a>
                     <a href="../faqs/FAQ.html">FAQs</a>
                 </div>
                 <div class="right">

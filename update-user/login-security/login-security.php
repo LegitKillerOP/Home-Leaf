@@ -7,51 +7,34 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-require_once "../config.php";
+require_once "../../config.php";
 
-// Initialize variables
-$username = "";
-$email = "";
-$loc = "";
-$username_err = $email_err = $current_password_err = $new_password_err = $confirm_password_err = "";
-
-// Check if session variables are set
-if(isset($_SESSION["username"])) {
-    $username = $_SESSION["username"];
-}
-
-if(isset($_SESSION["email"])) {
-    $email = $_SESSION["email"];
-}
-
-if(isset($_SESSION["loc"])) {
-    $loc = $_SESSION["loc"];
-}
+$username = $_SESSION["username"];
+$email = $_SESSION["email"];
+$mobile_number = $_SESSION["mobile_number"];
+$username_err = $email_err = $current_password_err = $new_password_err = $confirm_password_err = $mobile_number_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Process profile update
     if (isset($_POST["update_profile"])) {
         $newUsername = $_POST["username"];
         $newEmail = $_POST["email"];
-        $newAddress = $_POST["address"];
+        $newMobile = $_POST["mobile_number"];
 
-        // Check if a file is selected for upload
-        if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-            $avatar_data = file_get_contents($_FILES['avatar']['tmp_name']);
-        } else {
-            // No file uploaded, set avatar_data to default avatar
-            $avatar_data = file_get_contents("../images/default-avatar.png");
+        if (!preg_match("/^[0-9]{10}$/", $newMobile)) {
+            $mobile_number_err = "Please enter a valid 10-digit mobile number.";
         }
 
-        $sql = "UPDATE users SET username = ?, email = ?, avatar = ?, loc = ? WHERE id = ?";
+        $sql = "UPDATE users SET username = ?, email = ?, mobile_number = ? WHERE id = ?";
 
         if ($stmt = mysqli_prepare($link, $sql)) {
-            mysqli_stmt_bind_param($stmt, "ssssi", $newUsername, $newEmail, $avatar_data, $newAddress, $_SESSION["id"]);
+            mysqli_stmt_bind_param($stmt, "sssi", $newUsername, $newEmail, $newMobile, $_SESSION["id"]);
 
             if (mysqli_stmt_execute($stmt)) {
                 $_SESSION["username"] = $newUsername;
                 $_SESSION["email"] = $newEmail;
-                $_SESSION["loc"] = $newAddress;
+                $_SESSION["mobile_number"] = $newMobile;
+                header("location: ../../user/logined-user.php");
                 exit;
             } else {
                 echo "Oops! Something went wrong. Please try again later.";
@@ -68,6 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $currentPassword = $_POST["current_password"];
         $newPassword = $_POST["new_password"];
         $confirmPassword = $_POST["confirm_password"];
+
+        // Validation
+        // Add your validation logic here
 
         // Validate current password
         $sql = "SELECT password FROM users WHERE id = ?";
@@ -87,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     mysqli_stmt_bind_param($stmt_update, "si", $new_password_hash, $_SESSION["id"]);
                                     if (mysqli_stmt_execute($stmt_update)) {
                                         // Password updated successfully
-                                        header("location: ../user/logined-user.php");
+                                        header("location: ../../user/logined-user.php");
                                         exit;
                                     } else {
                                         echo "Oops! Something went wrong. Please try again later.";
@@ -106,30 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         mysqli_close($link);
     }
-    if (isset($_POST["update_address"])) {
-        $newAddress = $_POST["address"];
-
-        // Update the user's address in the database
-        $sql = "UPDATE users SET loc = ? WHERE id = ?";
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            mysqli_stmt_bind_param($stmt, "si", $newAddress, $_SESSION["id"]);
-
-            if (mysqli_stmt_execute($stmt)) {
-                // Update the session variable with the new address
-                $_SESSION["loc"] = $newAddress;
-
-                // Redirect the user to the profile page
-                header("location: ../user/logined-user.php");
-                exit;
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            mysqli_stmt_close($stmt);
-        }
-
-        mysqli_close($link);
-    }
 }
 ?>
 
@@ -138,11 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile - Home Leaf</title>
-    <link rel="stylesheet" href="update-user.css">
+    <title>Login and Security - Home Leaf</title>
+    <link rel="stylesheet" href="login-security.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="icon" href="../images/Logo.png" type="image/x-icon">
+    <link rel="icon" href="../../images/Logo.png" type="image/x-icon">
 </head>
 <body>
 
@@ -151,33 +113,65 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <nav class="navbar">
-        <div class="max-width">
+        <div class="container">
             <div class="left">
                 <div class="logo">
-                    <a href="../index.php"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
+                    <a href="../../index.php"><img src="../../images/Logo.png" alt="Logo" draggable="false"></a>
                 </div>
             </div>
-            <div class="searchbox">
-                <i class='bx bx-search'></i>
+            <div class="searchbox">   
                 <input placeholder="Search for groceries" class="desktop-searchBar" value=""
-                       data-reactid="904">
+                data-reactid="904">
             </div>
             <div class="right">
                 <div class="cart">
-                    <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
+                    <a href="../../cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../user/user.html"><i class='bx bx-user-circle'></i></a>
+                    <a href="../../login.php"><i class='bx bx-user-circle'></i></a>
+                </div>
+            </div>
+        </div><div class="nav2">
+            <div class="container">
+                <div class="dropdown">
+                    <button class="dropbtn">Shop with category ▼</button>
+                    <div class="dropdown-content">
+                        <a href="../../fruits-vegitables/fruits-vegitables.html">Fruit & Vegetable</a>
+                        <a href="#">Foodgrains, Oil & Masala</a>
+                        <a href="#">Bakery, Cakes & Dairy</a>
+                        <a href="#">Beverages</a>
+                        <a href="#">Snacks</a>
+                    </div>
+                </div>
+                <div class="others">
+                    <a href="">Exotic Fruits & Veggies</a>
+                </div>
+                <div class="others">
+                    <a href="">Tea</a>
+                </div>
+                <div class="others">
+                    <a href="">Ghee</a>
+                </div>
+                <div class="others">
+                    <a href="">Fresh Vegetables</a>
+                </div>
+                <div class="others">
+                    <a href="">Milk</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <div class="home">
+        <a href="../../user/logined-user.php">Back /</a>
+        <span> Login And Security</span>
+    </div>
+
     <section class="edit-profile">
-        <h1>EDIT YOUR PROFILE</h1>
+
+        <h1>Login And Security</h1>
         <div class="container">
             <div class="editprofile">
-                <h2>Edit Details</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="username">Username:</label>
@@ -188,31 +182,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" class="form-input">
                     </div>
                     <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($loc); ?>">
+                        <label for="mobile_number" class="form-label">Primary Mobile Number:</label>
+                        <input type="text" id="mobile_number" name="mobile_number" value="<?php echo htmlspecialchars($mobile_number); ?>" class="form-input" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);">
+                        <?php if (!empty($mobile_number_err)) { ?>
+                            <span class="invalid-feedback"><?php echo $mobile_number_err; ?></span>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
                     </div>
                 </form>
             </div>
-            <div class="edit-avatar">
-                <h2>Edit Avatar</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label for="avatar">Avatar:</label>
-                        <input type="file" id="avatar" name="avatar" accept="image/*">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" name="update_profile" class="btn btn-primary">Update avatar</button>
-                    </div>
-                </form>
-            </div>
+            
             <div class="edit-password">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
-                        <h2>Change Password</h2>
                         <label for="current_password">Current Password:</label>
                         <input type="password" id="current_password" name="current_password" value="">
                         <?php if (!empty($current_password_err)) { ?>
@@ -266,5 +250,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </footer>
 
+    <script src="login-security.js"></script>
 </body>
 </html>

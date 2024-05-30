@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: ../login.php");
+    exit;
+}
+
+require_once "../config.php";
+
+$username = isset($_SESSION["username"]) ? $_SESSION["username"] : "";
+$email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,24 +27,27 @@
 </head>
 <body>
 
+    <div class="scroll-up-btn show">
+        <i class='bx bx-chevron-up'></i>
+    </div>
+
     <nav class="navbar">
-        <div class="max-width">
+        <div class="container">
             <div class="left">
                 <div class="logo">
-                    <a href="../index.html"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
+                    <a href="../index.php"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
                 </div>
             </div>
-            <div class="searchbox"> 
-                <i class='bx bx-search' ></i>      
+            <div class="searchbox">   
                 <input placeholder="Search for groceries" class="desktop-searchBar" value=""
                 data-reactid="904">
             </div>
             <div class="right">
                 <div class="cart">
-                    <a href="../cart/cart.html"><i class='bx bx-cart'></i></a>
+                    <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../user/user.html"><i class='bx bx-user-circle'></i></a>
+                    <a href="../login.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
         </div>
@@ -36,18 +55,21 @@
 
     <main>
         <div class="form-container">
-            <form id="contactForm">
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
                 <h2>Contact Us</h2>
+                <input type="hidden" name="access_key" value="4c08034a-3097-423c-9cd9-e5f250cdef9e">
+                
                 <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" r  equired>
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($username); ?>" required>
 
                 <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
 
-                <label for="message">Your Message:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <textarea name="message" required></textarea>
 
-                <button type="button" onclick="sendEmail()">Send Email</button>
+                <div class="h-captcha" data-captcha="true"></div>
+
+                <button type="submit">Send Email</button>
             </form>
         </div>
     </main>
@@ -63,7 +85,7 @@
                     <a href="../index.html">About Us</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms And Conditions</a>
-                    <a href="../contact/contact.html">Contact Us</a>
+                    <a href="../contact/contact.php">Contact Us</a>
                     <a href="../faqs/FAQ.html">FAQs</a>
                 </div>
                 <div class="right">
@@ -79,4 +101,4 @@
 
 </body>
 </html>
-<script src="contact.js"></script>
+<script src="https://web3forms.com/client/script.js" async defer></script>

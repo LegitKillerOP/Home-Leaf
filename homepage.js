@@ -36,3 +36,28 @@ function calculatePrice(cardId) {
     var selectedAmount = amountDropdown.value;
     priceDisplay.textContent = 'Price: ₹' + priceMap[cardId][selectedAmount];
 }
+function addToCart(button) {
+    const item = button.closest('.card');
+    const name = item.querySelector('.item-name h3').textContent;
+    const amount = item.querySelector('.amount select').value;
+    const price = parseFloat(item.querySelector('.price p').textContent.split('₹')[1]);
+    const imgSrc = item.querySelector('.card-img img').src; // Get the image URL
+
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let existingItem = cartItems.find(cartItem => cartItem.name === name && cartItem.amount === amount);
+
+    if (existingItem) {
+        // If the item already exists in the cart, increment its quantity
+        existingItem.quantity += 1;
+    } else {
+        // Otherwise, add a new item to the cart
+        const cartItem = { name, amount, price, imgSrc, quantity: 1 };
+        cartItems.push(cartItem);
+    }
+    
+    // Store updated cart in localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    alert('Item added to cart!');
+}
+

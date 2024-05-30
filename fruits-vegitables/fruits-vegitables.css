@@ -3,28 +3,28 @@
     margin: 0;
     font-family: Verdana;
     text-decoration: none;
-  }
-  body,html{
+}
+body,html{
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-  }
-  ::-webkit-scrollbar {
+}
+::-webkit-scrollbar {
     width: 10px;
-  }
-  ::-webkit-scrollbar-track {
+}
+::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
+}
+::-webkit-scrollbar-thumb {
     background: #888;
-  }
+}
   
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
-  .navbar{
+}
+.navbar{
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -33,36 +33,36 @@
     width: 100%;
     height: 130px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  .navbar .container{
+}
+.navbar .container{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
     margin: 5px 0px;
-  }
-  .navbar .left{
+}
+.navbar .left{
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-  .navbar .left img{
+}
+.navbar .left img{
     width: 60px;
     transition: color 0.3s, transform 0.3s;
-  }
-  .navbar .left a:hover,
-  .navbar .left img:hover,
-  .navbar .right i:hover {
+}
+.navbar .left a:hover,
+.navbar .left img:hover,
+.navbar .right i:hover {
     transform: scale(1.1);
     cursor: pointer;
-  }
-  .navbar .right{
+}
+.navbar .right{
     display: flex;
     gap: 35px;
     align-items: center;
-  }
-  .searchbox input {
+}
+.searchbox input {
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -73,16 +73,16 @@
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 600px 12px 40px;
-  }
-  .right i{
+}
+.right i{
     font-size: 30px;
     color: #000;
     transition: color 0.3s, transform 0.3s;
-  }
-  .right i:hover{
+}
+.right i:hover{
     cursor: pointer;
-  }
-  .nav2 .container {
+}
+.nav2 .container{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -140,7 +140,7 @@
     display: block;
   }
   
-  .scroll-up-btn{
+.scroll-up-btn{
     position: fixed;
     height: 45px;
     width: 42px;
@@ -158,135 +158,162 @@
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
-  }
-  .scroll-up-btn.show{
+}
+.scroll-up-btn.show{
     bottom: 30px;
     opacity: 1;
     pointer-events: auto;
-  }
-  .scroll-up-btn:hover{
+}
+.scroll-up-btn:hover{
     filter: brightness(90%);
-  }
-.profile{
-    margin: 100px;
 }
-.profile .container{
+
+
+.home{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 100px;
+    gap: 10px;
+    margin: 10px 380px;
     align-items: center;
 }
-.profile .container .left .pfp{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-}
-.profile .container .left .pfp img {
-    border-radius: 50%;
-    width: 100%; 
-    height: auto; 
-    max-width: 150px;
-    max-height: 150px;
-    object-fit: cover;
-}
-.profile .container .left .pfp .details {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.profile .container .left .pfp .details .heading {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-}
-.profile .container .left .pfp .details .heading h1 {
-    font-size: 18px;
-    color: #333;
-}
-.profile .container .left .pfp .details .content {
-    margin-top: 15px;
-}
-.profile .container .left .pfp .details .content .name,
-.profile .container .left .pfp .details .content .email,
-.profile .container .left .pfp .details .content .phone,
-.profile .container .left .pfp .details .content .address ,
-.profile .container .left .pfp .details .content .pincode,
-.profile .container .left .pfp .details .content .country,
-.profile .container .left .pfp .details .content .city  {
-    margin-bottom: 15px;
-}
-.profile .container .left .pfp .details .content p {
-    margin: 0;
+.home i,.home span{
     font-size: 14px;
-    color: #666;
+    color: #000;
 }
-.profile .container .left .pfp .details .content h3,
-.profile .container .left .pfp .details .content h4 {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #333;
+.home p{
+    font-size: 14px;
     font-weight: bold;
+    color: #000;
 }
-.profile .container .left .login-btns{
+.banner {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 15px 0px;
-}
-.login-btns button{
-    width: 100px;
-    height: 40px;
-    font-size: 20px;
-    font-family: sans-serif;
-    background-color: #e59037;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-}
-.login-btns button:hover{
-    cursor: pointer;
-    background-color: transparent;
-    border: 2px solid #e59037;
-    color: #e59037;
-}
-.profile .container .right .heading{
-    display: flex;
-    flex-direction: column;
     margin: 20px 0px;
+} 
+.banner img{
+    width: 1150px;
 }
-.profile .container .right .about-you{
+.heading{
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 10px 365px;
+    border-bottom: #aeaeae dashed 1px;
 }
-.profile .container .right .about-you .card {
-    background-color: #f8fafc;
+.heading .buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.heading p,i{
+    font-size: 20px;
+} 
+.heading .buttons button{
     display: flex;
     align-items: center;
-    border: #bababa 1px solid;
-    border-radius: 15px;
-    height: 90px;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid rgb(179, 179, 179);
+    color: #202020;
 }
-.profile .container .right .about-you .card:hover{
-    background-color: #ebebeb;
+.heading .buttons button:hover{
     cursor: pointer;
+    background-color: #404040;
+    border: 1px solid rgb(179, 179, 179);
+    color: #fff;
     transition: 0.3s all;
 }
-.profile .container .right .about-you .card img{
-    margin: 10px;
-    width: 70px;
+.main-container{
+    display: flex;
+    margin: 30px 385px;
+    gap: 20px;
 }
-.profile .container .right .about-you .card .content h3{
-    font-size: 18px;
-    color: #000;
+.filter{
+    width: 25%;
 }
-.profile .container .right .about-you .card .content p{
-    font-size: 15px;
-    color: #000;
+.filter h3{
+    font-size: 16px;
 }
+.filter .category{
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.filter .category span{
+  color: #5e9400;
+  font-size: 15px;
+}
+.filter .category p{
+  font-size: 15px;
+  margin: 20px 15px;
+}
+.card-container{
+    display: flex;
+    justify-content: center;
+}
+.card{
+  width: 250px;
+  margin: 0 15px 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.card-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-details {
+  padding: 15px;
+}
+.item-details .item-name h3 {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.price p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+.amount {
+  margin-bottom: 10px;
+}
+.amount select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #555;
+  width: 220px;
+}
+.cart-btn button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.cart-btn button:hover {
+  background-color: #45a049;
+}
+
 .footer {
     border-top: 2px solid #999;
     background-color: #f5f5f5;
@@ -340,55 +367,4 @@
     margin-top: 20px;
     font-size: 14px;
     color: #777;
-}
-@media only screen and (max-width: 1024px) {
-    .navbar .left{
-        margin-left: 0px;
-    }
-    .navbar .searchbox input{
-        width: 600px;
-    }
-    .footer .container{
-        margin: 0px 200px;
-    }
-}
-@media only screen and (max-width: 768px) {
-    .navbar .left{
-        margin-left: 0px;
-    }
-    .navbar .searchbox input{
-        width: 400px;
-    }
-    .footer .container{
-        margin: 0px 200px;
-    }
-}
-@media only screen and (max-width: 425px) {
-    .navbar{
-        height: 60px;
-    }
-    .navbar .left img {
-        width: 60px;
-        margin-left: -15px;
-    }
-    .searchbox i{
-        font-size: 20px;
-        height: 20px;
-    }
-    .navbar .searchbox input{
-        width: 200px;
-    }
-    .searchbox input {
-        font-size: 18px;
-        height: 20px;
-    }
-    .navbar .right{
-        gap: 15px;
-    }
-    .navbar .right i {
-        font-size: 35px;
-    }
-    .footer .container{
-        margin: 0px 20px;
-    }
 }

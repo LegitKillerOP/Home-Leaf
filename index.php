@@ -16,28 +16,26 @@
     </div>
 
     <nav class="navbar">
-        <div class="max-width">
+        <div class="container">
             <div class="left">
                 <div class="logo">
-                    <a href="index.php"><img src="../project/images/Logo.png" alt="Logo" draggable="false"></a>
+                    <a href="index.php"><img src="images/Logo.png" alt="Logo" draggable="false"></a>
                 </div>
             </div>
-            <div class="searchbox"> 
-                <i class='bx bx-search' ></i>      
+            <div class="searchbox">   
                 <input placeholder="Search for groceries" class="desktop-searchBar" value=""
                 data-reactid="904">
             </div>
             <div class="right">
                 <div class="cart">
-                    <a href="../project/cart/cart.html"><i class='bx bx-cart'></i></a>
+                    <a href="cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../project/login.php"><i class='bx bx-user-circle'></i></a>
+                    <a href="../../login.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
         </div>
     </nav>
-    
     
     <section class="about">
         <div class="about">
@@ -158,7 +156,7 @@
                         </div>
                         <div class="cart-controls">
                             <div class="cart-btn">
-                                <a href="../project/cart/cart.html"><button>Add to Cart</button></a>
+                                <button onclick="addToCart(this)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -187,7 +185,7 @@
                         </div>
                         <div class="cart-controls">
                             <div class="cart-btn">
-                                <button>Add to Cart</button>
+                                <button onclick="addToCart(this)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -216,7 +214,7 @@
                         </div>
                         <div class="cart-controls">
                             <div class="cart-btn">
-                                <button>Add to Cart</button>
+                                <button onclick="addToCart(this)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -246,7 +244,7 @@
                         </div>
                         <div class="cart-controls">
                             <div class="cart-btn">
-                                <button>Add to Cart</button>
+                                <button onclick="addToCart(this)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -274,7 +272,7 @@
                         </div>
                         <div class="cart-controls">
                             <div class="cart-btn">
-                                <button>Add to Cart</button>
+                                <button onclick="addToCart(this)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -310,18 +308,20 @@
             </div>
         </div>
     </section>
+    
     <footer>
         <div class="footer">
             <div class="heading">
-                <img src="../project/images/Logo.png" alt="Logo">
+                <img src="../images/Logo.png" alt="Logo">
                 <h1>Home Leaf</h1>
             </div>
             <div class="container">
                 <div class="left">
-                    <a href="../project/index.html">About Us</a>
+                    <a href="../index.html">About Us</a>
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms And Conditions</a>
-                    <a href="../project/faqs/FAQ.html">FAQs</a>
+                    <a href="../contact/contact.php">Contact Us</a>
+                    <a href="../faqs/FAQ.html">FAQs</a>
                 </div>
                 <div class="right">
                     <a href="https://www.instagram.com/home._.leaf/" target="_blank"><i class="bx bxl-instagram"></i> Instagram</a>
@@ -333,7 +333,6 @@
             </div>
         </div>
     </footer>
-    
 
 </body>
 </html>
