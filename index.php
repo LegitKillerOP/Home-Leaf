@@ -31,7 +31,7 @@
                     <a href="cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../../login.php"><i class='bx bx-user-circle'></i></a>
+                    <a href="user/logined-user.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
         </div>

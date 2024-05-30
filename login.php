@@ -1,11 +1,14 @@
 <?php
 session_start();
 
-// Check if the user is already logged in, if yes then redirect him to the cart page
-if(isset($_SESSION["user_id"])) {
-    header("Location: user/logined-user.php");
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
     exit;
 }
+
+// Get the redirect URL from the query parameter
+$redirect_url = isset($_GET['redirect']) ? $_GET['redirect'] : 'index.php';
 
 // Include config file
 require_once "config.php";
