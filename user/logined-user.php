@@ -163,7 +163,7 @@ require_once "../config.php";
                 </div>
                 <div class="about-you">
 
-                    <a href="" style="color: black;">
+                    <a href="../orders/order.php" style="color: black;">
                         <div class="card">
                             <div class="card-img">
                                 <img src="https://png.pngtree.com/png-vector/20220606/ourmid/pngtree-box-parcel-icon-isometric-vector-png-image_4877724.png" alt="" draggable=false>
@@ -197,7 +197,7 @@ require_once "../config.php";
                         </div>
                     </a>
                     
-                    <a href="../contact/contact.html" style="color: black;">
+                    <a href="../contact/contact.php" style="color: black;">
                         <div class="card">
                             <div class="card-img">
                                 <img src="https://m.media-amazon.com/images/G/31/x-locale/cs/help/images/gateway/self-service/contact_us._CB623781998_.png" alt="" draggable=false>

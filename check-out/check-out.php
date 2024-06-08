@@ -9,6 +9,44 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 require_once "../config.php";
 
+$order_id = ""; // Initialize variable to store the order ID
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $userId = $_SESSION["id"];
+    $address = isset($_SESSION["loc"]) ? $_SESSION["loc"] : "";
+    $paymentMethod = $_POST["payment_method"];
+    $totalPrice = $_POST["total_price"];
+    
+    // Insert order into the database
+    $sql = "INSERT INTO orders (user_id, address, payment_method, total_price) VALUES (?, ?, ?, ?)";
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        mysqli_stmt_bind_param($stmt, "isss", $userId, $address, $paymentMethod, $totalPrice);
+        
+        if (mysqli_stmt_execute($stmt)) {
+            // Get the last inserted ID
+            $order_id = mysqli_insert_id($link);
+            echo "<script>alert('Order placed successfully!');</script>";
+        } else {
+            echo "Error: Could not execute the query: " . mysqli_error($link);
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        echo "Error: Could not prepare the query: " . mysqli_error($link);
+    }
+    
+    mysqli_close($link);
+}
+
+// Fetch orders for the logged-in user
+$userId = $_SESSION["id"];
+$sql = "SELECT * FROM orders WHERE user_id = ?";
+if ($stmt = mysqli_prepare($link, $sql)) {
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+} else {
+    echo "Error: Could not prepare the query: " . mysqli_error($link);
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,14 +96,14 @@ require_once "../config.php";
                     </div>
                     <div class="right">
                         <?php if(isset($_SESSION["loc"]) && !empty($_SESSION["loc"])): ?>
-                                <div class="addresss">
-                                    <p><?php echo htmlspecialchars($_SESSION["loc"]); ?> <?php echo htmlspecialchars($_SESSION["Pincode"]); ?> <?php echo htmlspecialchars($_SESSION["City"]); ?>  <?php echo htmlspecialchars($_SESSION["Country"]); ?></p>
-                                </div>
-                            <?php else: ?>
-                                <div class="addresss">
-                                    <p>Add Address</p>
-                                </div>
-                            <?php endif; ?>
+                            <div class="addresss">
+                                <p><?php echo htmlspecialchars($_SESSION["loc"]); ?></p>
+                            </div>
+                        <?php else: ?>
+                            <div class="addresss">
+                                <p>Add Address</p>
+                            </div>
+                        <?php endif; ?>
                         <a href="">Change</a>
                     </div>
                 </div>
@@ -74,7 +112,7 @@ require_once "../config.php";
                         <p>2</p><span>Select a payment method</span>
                     </div>
                     <div class="right">
-                        <form id="payment-form">
+                        <form id="payment-form" method="POST" action="check-out.php">
                             <div class="payment-method">
                                 <input type="radio" id="credit-card" name="payment_method" value="credit_card" checked>
                                 <label for="credit-card"><i class='bx bx-credit-card'></i> Credit/Debit Card</label>
@@ -88,7 +126,7 @@ require_once "../config.php";
                                 <label for="cod"><i class='bx bx-money'></i> Cash on Delivery</label>
                             </div>
                             <div id="payment-details"></div>
-                            <button type="button" id="confirm-payment" class="btn btn-primary">Confirm Payment</button>
+                            <input type="hidden" name="total_price" id="total_price">
                         </form>
                     </div>
                 </div>
@@ -114,6 +152,23 @@ require_once "../config.php";
                     </div>
                 </div>
             </div>
+
+            <div class="order-confirmation-modal" id="order-confirmation-modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="tick-icon">
+                        <i class='bx bxs-check-circle bx-tada'></i>
+                    </div>
+                    <h2>Order Confirmed!</h2>
+                    <p>Thank you for your order. Your order has been successfully placed.</p>
+                    <div class="amount">
+                        <p>Total Amount: <span id="order-amount"><div id="confirm-total-price"></div></span></p>
+                    </div>
+                </div>
+            </div>
+
+
+
             <div class="summary">
                 <div class="container">
                     <div class="place-order">
@@ -171,6 +226,6 @@ require_once "../config.php";
         </div>
     </footer>
 
+    <script src="check-out.js"></script>
 </body>
 </html>
-<script src="check-out.js"></script>

@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const paymentDetails = document.getElementById("payment-details");
 
     document.querySelectorAll('input[name="payment_method"]').forEach((elem) => {
-        elem.addEventListener("change", function(event) {
+        elem.addEventListener("change", function (event) {
             updatePaymentDetails(event.target.value);
         });
     });
@@ -47,79 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Set initial payment details
     updatePaymentDetails(document.querySelector('input[name="payment_method"]:checked').value);
 
-    document.getElementById("confirm-payment").addEventListener("click", function() {
-        const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-    
-        if (selectedPaymentMethod === "credit_card") {
-            // Check if the card logo is displayed
-            const cardTypeDisplay = document.getElementById("card-type");
-            if (!cardTypeDisplay.querySelector("img")) {
-                alert("Please enter a valid card number.");
-                return;
-            }
-    
-            // Validate card details before proceeding with payment
-            const cardNumber = document.getElementById("card-number").value;
-            const cardExpiry = document.getElementById("card-expiry").value;
-            const cardCVC = document.getElementById("card-cvc").value;
-    
-            if (!validateCardNumber(cardNumber)) {
-                alert("Invalid card number. Please enter 12 digits.");
-                return;
-            }
-    
-            if (!validateExpiryDate(cardExpiry)) {
-                alert("Invalid expiry date. Use MM/YY format.");
-                return;
-            }
-    
-            if (!validateCVC(cardCVC)) {
-                alert("Invalid CVC. Please enter 3 digits.");
-                return;
-            }
-    
-            // If all validations pass, proceed with payment
-            handleCreditCardPayment();
-        } else if (selectedPaymentMethod === "paypal") {
-            handlePayPalPayment();
-        } else if (selectedPaymentMethod === "cod") {
-            handleCODPayment();
-        }
-    });
-    
-    
-
-    function handleCreditCardPayment() {
-        const cardNumber = document.getElementById("card-number").value;
-        const cardExpiry = document.getElementById("card-expiry").value;
-        const cardCVC = document.getElementById("card-cvc").value;
-
-        alert("Payment successful!");
-        // Proceed with payment processing (client-side only)
-    }
-
-    function validateCardNumber(cardNumber) {
-        return /^\d{12}$/.test(cardNumber);  // Check if the card number is exactly 12 digits
-    }
-
-    function validateExpiryDate(expiryDate) {
-        return /^\d{2}\/\d{2}$/.test(expiryDate); // Check if the expiry date is in MM/YY format
-    }
-
-    function validateCVC(cvc) {
-        return /^\d{3}$/.test(cvc);  // Check if the CVC is exactly 3 digits
-    }
-
-    function handlePayPalPayment() {
-        // Redirect to PayPal for payment
-        window.location.href = "https://www.paypal.com/checkoutnow?token=YOUR_PAYPAL_TOKEN";
-    }
-
-    function handleCODPayment() {
-        alert("Cash on Delivery selected. You will pay when the order is delivered.");
-    }
-
-    // Additional input constraints and card type detection
     function handleCardNumberInput() {
         const cardNumberInput = document.getElementById("card-number");
         const cardTypeDisplay = document.getElementById("card-type");
@@ -130,25 +57,18 @@ document.addEventListener("DOMContentLoaded", function() {
         const cardType = getCardType(cardNumber);
 
         if (cardType) {
-            // Create an image element for the card logo
             const cardLogo = document.createElement("img");
             cardLogo.src = `${cardType.toLowerCase()}-logo.png`; // Assuming card logo filenames are lowercase
     
-            // Create a text node for the card type
             const cardTypeText = document.createTextNode(cardType);
     
-            // Clear any previous content
             cardTypeDisplay.innerHTML = "";
-    
-            // Append the logo and text to the card type display
             cardTypeDisplay.appendChild(cardLogo);
             cardTypeDisplay.appendChild(cardTypeText);
             
-            // Remove invalid class if present
             cardNumberInput.classList.remove("invalid");
         } else {
-            cardTypeDisplay.innerHTML = "Invalid Card Type"; // Display invalid message
-            // Add invalid class to card input
+            cardTypeDisplay.innerHTML = "Invalid Card Type";
             cardNumberInput.classList.add("invalid");
         }
     }
@@ -193,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         return true;
     }
+    
     function handleExpiryDateInput() {
         const expiryInput = document.getElementById("card-expiry");
         expiryInput.value = expiryInput.value
@@ -200,59 +121,140 @@ document.addEventListener("DOMContentLoaded", function() {
             .substring(0, 4)
             .replace(/(\d{2})(\d)/, '$1/$2');
     }
+
+    document.querySelectorAll('.check-out-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
     
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    displayCartItems();
-});
-
-function displayCartItems() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const cartContainer = document.getElementById('cart-items');
-    const reviewTotalPriceContainer = document.getElementById('review-total-price');
-    const summaryTotalPriceContainer = document.getElementById('summary-total-price');
-    const orderTotalPriceContainer = document.getElementById('order-total-price');
+            if (selectedPaymentMethod === "credit_card") {
+                const cardNumber = document.getElementById("card-number").value;
+                const cardExpiry = document.getElementById("card-expiry").value;
+                const cardCVC = document.getElementById("card-cvc").value;
     
-    cartContainer.innerHTML = '';
-  
-    let totalPrice = 0;
-  
-    cartItems.forEach(item => {
-        const cartItemDiv = document.createElement('div');
-        cartItemDiv.classList.add('cart-item');
-        
-        const img = document.createElement('img');
-        img.src = item.imgSrc;
-        img.alt = item.name;
-        cartItemDiv.appendChild(img);
-  
-        const details = document.createElement('div');
-        details.classList.add('item-details');
-        
-        // Display item name with quantity
-        const name = document.createElement('h3');
-        name.textContent = `${item.quantity}x ${item.name}`;
-        details.appendChild(name);
-  
-        const amount = document.createElement('p');
-        amount.textContent = `Amount: ${item.amount}`;
-        details.appendChild(amount);
-  
-        const price = document.createElement('p');
-        price.textContent = `Price: ₹${item.price * item.quantity}`;
-        details.appendChild(price);
-  
-        cartItemDiv.appendChild(details);
-        cartContainer.appendChild(cartItemDiv);
-  
-        totalPrice += item.price * item.quantity;
+                if (!validateCardNumber(cardNumber)) {
+                    alert("Invalid card number. Please enter 12 digits.");
+                    return;
+                }
+    
+                if (!validateExpiryDate(cardExpiry)) {
+                    alert("Invalid expiry date. Use MM/YY format.");
+                    return;
+                }
+    
+                if (!validateCVC(cardCVC)) {
+                    alert("Invalid CVC. Please enter 3 digits.");
+                    return;
+                }
+            }
+    
+            const formData = new FormData(document.getElementById("payment-form"));
+            fetch('check-out.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                console.log(result); // Log the result of the SQL query execution
+                openOrderConfirmationModal(); // Open the modal
+            })
+            .catch(error => {
+                console.error('Error:', error); // Log any errors that occur during the fetch request
+                alert('An error occurred while placing the order. Please try again later.');
+            });
+        });
     });
-  
-    const totalPriceText = `₹${totalPrice}`;
-    reviewTotalPriceContainer.textContent = totalPriceText;
-    summaryTotalPriceContainer.textContent = totalPriceText;
-    orderTotalPriceContainer.textContent = totalPriceText;
-}
+    
+    // Function to open the order confirmation modal
+    function openOrderConfirmationModal() {
+        const modal = document.getElementById("order-confirmation-modal");
+        modal.classList.add("active");
+    }
+    
+    // Function to close the order confirmation modal
+    function closeOrderConfirmationModal() {
+        const modal = document.getElementById("order-confirmation-modal");
+        modal.classList.remove("active");
+    }
+    
+    // Close the modal when the close button is clicked
+    document.querySelector('.modal-content .close').addEventListener('click', closeOrderConfirmationModal);    
+
+    function validateCardNumber(cardNumber) {
+        return /^\d{12}$/.test(cardNumber);
+    }
+
+    function validateCVC(cvc) {
+        return /^\d{3}$/.test(cvc);
+    }
+
+    displayCartItems();
+    updateTotalPriceDisplay();
+
+    function displayCartItems() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartContainer = document.getElementById('cart-items');
+        const reviewTotalPriceContainer = document.getElementById('review-total-price');
+        const summaryTotalPriceContainer = document.getElementById('summary-total-price');
+        const confirmTotalPriceContainer = document.getElementById('confirm-total-price');
+        const orderTotalPriceContainer = document.getElementById('order-total-price');
+        
+        cartContainer.innerHTML = '';
+      
+        let totalPrice = 0;
+      
+        cartItems.forEach(item => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            
+            const img = document.createElement('img');
+            img.src = item.imgSrc;
+            img.alt = item.name;
+            cartItemDiv.appendChild(img);
+      
+            const details = document.createElement('div');
+            details.classList.add('item-details');
+            
+            const name = document.createElement('h3');
+            name.textContent = `${item.quantity}x ${item.name}`;
+            details.appendChild(name);
+      
+            const amount = document.createElement('p');
+            amount.textContent = `Amount: ${item.amount}`;
+            details.appendChild(amount);
+      
+            const price = document.createElement('p');
+            price.textContent = `Price: ₹${item.price * item.quantity}`;
+            details.appendChild(price);
+      
+            cartItemDiv.appendChild(details);
+            cartContainer.appendChild(cartItemDiv);
+      
+            totalPrice += item.price * item.quantity;
+        });
+      
+        const totalPriceText = `₹${totalPrice}`;
+        reviewTotalPriceContainer.textContent = totalPriceText;
+        summaryTotalPriceContainer.textContent = totalPriceText;
+        confirmTotalPriceContainer.textContent = totalPriceText;
+        orderTotalPriceContainer.textContent = totalPriceText;
+    }
+
+    function updateTotalPriceDisplay() {
+        const totalPrice = calculateTotalPrice();
+        document.getElementById("review-total-price").innerText = `₹${totalPrice}`;
+        document.getElementById("summary-total-price").innerText = `₹${totalPrice}`;
+        document.getElementById("order-total-price").innerText = `₹${totalPrice}`;
+        document.getElementById("total_price").value = totalPrice;
+    }
+
+    function calculateTotalPrice() {
+        let totalPrice = 0;
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cartItems.forEach(item => {
+            totalPrice += item.price * item.quantity;
+        });
+        return totalPrice.toFixed(2);
+    }
+});
