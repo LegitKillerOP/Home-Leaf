@@ -91,7 +91,7 @@
                     <div class="right">
                         <a href="../index.php">About Us</a>
                         <a href="#">Privacy Policy</a>
-                        <a href="#">Terms And Conditions</a>
+                        <a href="../terms-condition/terms.html">Terms And Conditions</a>
                         <a href="../contact/contact.php">Contact Us</a>
                         <a href="../faqs/FAQ.html">FAQs</a>
                     </div>

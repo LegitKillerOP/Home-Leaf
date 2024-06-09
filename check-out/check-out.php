@@ -115,11 +115,11 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                         <form id="payment-form" method="POST" action="check-out.php">
                             <div class="payment-method">
                                 <input type="radio" id="credit-card" name="payment_method" value="credit_card" checked>
-                                <label for="credit-card"><i class='bx bx-credit-card'></i> Credit/Debit Card</label>
+                                <label for="credit-card"><i class='bx bx-credit-card'></i> Credit / Debit Card</label>
                             </div>
                             <div class="payment-method">
-                                <input type="radio" id="paypal" name="payment_method" value="paypal">
-                                <label for="paypal"><i class='bx bxl-paypal'></i> PayPal</label>
+                                <input type="radio" id="upi" name="payment_method" value="upi">
+                                <label for="upi"><i class='bx bx-qr-scan'></i></i> UPI / VPA</label>
                             </div>
                             <div class="payment-method">
                                 <input type="radio" id="cod" name="payment_method" value="cod">
@@ -211,7 +211,7 @@ if ($stmt = mysqli_prepare($link, $sql)) {
                     <div class="right">
                         <a href="../index.html">About Us</a>
                         <a href="#">Privacy Policy</a>
-                        <a href="#">Terms And Conditions</a>
+                        <a href="../terms-condition/terms.html">Terms And Conditions</a>
                         <a href="../contact/contact.php">Contact Us</a>
                         <a href="../faqs/FAQ.html">FAQs</a>
                     </div>

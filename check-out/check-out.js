@@ -33,10 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("card-number").addEventListener("input", handleCardNumberInput);
             document.getElementById("card-cvc").addEventListener("input", handleCVCInput);
             document.getElementById("card-expiry").addEventListener("input", handleExpiryDateInput);
-        } else if (paymentMethod === "paypal") {
+        } else if (paymentMethod === "upi") {
             paymentDetails.innerHTML = `
-                <p>You will be redirected to PayPal to complete your purchase.</p>
+                <div class="upi-details">
+                    <div class="upi">
+                        <label for="upi">UPI:</label>
+                        <input type="text" id="upi" name="upi" required>
+                    </div><br>
+                </div>
             `;
+
         } else if (paymentMethod === "cod") {
             paymentDetails.innerHTML = `
                 <p>Cash on Delivery is selected. You will pay when the order is delivered.</p>

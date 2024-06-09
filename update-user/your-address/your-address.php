@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a href="../../cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../../login.php"><i class='bx bx-user-circle'></i></a>
+                <a href="../user/logined-user.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
         </div><div class="nav2">
@@ -148,15 +148,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="footer">
             <div class="container">
                 <div class="left">
-                    <img src="../images/Logo.png" alt="Logo">
+                    <img src="../../images/Logo.png" alt="Logo">
                     <h1>Home Leaf</h1>
                 </div>
                 <div class="right">
-                    <a href="../index.php">About Us</a>
+                    <a href="../../index.php">About Us</a>
                     <a href="#">Privacy Policy</a>
-                    <a href="#">Terms And Conditions</a>
-                    <a href="../contact/contact.php">Contact Us</a>
-                    <a href="../faqs/FAQ.html">FAQs</a>
+                    <a href="../../terms-condition/terms.html">Terms And Conditions</a>
+                    <a href="../../contact/contact.php">Contact Us</a>
+                    <a href="../../faqs/FAQ.html">FAQs</a>
                 </div>
             </div>
             <hr>
