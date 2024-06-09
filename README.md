@@ -51,7 +51,8 @@ To run this project locally, follow these steps:
 
 4. **Start the Server:**
    - If you are using Apache, place the project folder in the `htdocs` directory.
-   - Start the Apache server and navigate to `http://localhost/home-leaf` in your web browser.
+   - Please rename the folder to "project".
+   - Start the Apache server and navigate to `http://localhost/project` in your web browser.
 
 ## Usage
 

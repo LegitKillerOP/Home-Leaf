@@ -125,6 +125,9 @@ body,html{
     z-index: 200;
     padding-top: 5px;
 }
+.about .sidebar a{
+    color: #000;
+}
 .about .sidebar-link {
     height: 74px;
     display: flex;
@@ -140,13 +143,18 @@ body,html{
     height: 24px;
     margin-bottom: 4px;
 }
-.about .sidebar-link div {
-    font-size: 12px;
+.about .sidebar-link p {
+    font-size: 14px;
+    text-align: center;
 }
 .about{
     background-color: #ffe9b8;
     min-height: 100%;
     min-width: 100%;
+    display: flex;
+    align-items: center;
+}
+.about .container{
     display: flex;
     align-items: center;
 }
@@ -206,7 +214,7 @@ body,html{
     border-radius: 15px;
     margin-bottom: 30px;
     width: 100%;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 .details .detailsheading h1{
     border-bottom: 1px solid #3e4152;
@@ -258,7 +266,7 @@ body,html{
     height: auto;
     border-radius: 15px;
     margin: 40px 0px;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .slideshow .fade img:hover{
     cursor: pointer;
@@ -389,13 +397,16 @@ body,html{
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+}
+.description img{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .description img:hover{
     cursor: pointer;
     transform: scale(1.02);
     transition: all 0.4ms;
-    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .description .container img{
     border-radius: 10px;
@@ -411,59 +422,54 @@ body,html{
 }
 
 .footer {
-    border-top: 2px solid #999;
-    background-color: #f5f5f5;
-    padding: 20px 0;
-}
-.footer .heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.footer .heading img {
-    width: 100px;
+    padding: 20px 80px;
+    background-color: #f1f1f1;
 }
 .footer .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    max-width: 1200px;
 }
-.footer .left,
-.footer .right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.footer .left a,
-.footer .right a {
+.footer .left img {
+    width: 100px;
     display: block;
     margin-bottom: 10px;
+}
+.footer .left h1 {
+    font-size: 24px;
+    margin: 0;
+}
+.footer .right a {
+    margin-left: 20px;
     color: #333;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 16px;
 }
-.footer .left a:hover,
 .footer .right a:hover {
+    text-decoration: underline;
+}
+.footer hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+.footer .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer .bottom .left p {
+    margin: 0;
+}
+.footer .bottom .right a {
+    margin-left: 10px;
+    color: #333;
+    font-size: 24px;
+}
+.footer .bottom .right a:hover {
     color: #007bff;
 }
-.footer .right{
-    display: flex;
-    flex-direction: column;
-}
-.footer .right i {
-    font-size: 24px;
-    color: #000;
-    margin-right: 5px;
-}
-.footer .copyright {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #777;
-}
+
 @media only screen and (max-width: 2560px) {
     .about .right{
         margin-top: -100px;
@@ -509,9 +515,6 @@ body,html{
         width: 300px;
         height: 200px;
     }
-    .footer .container{
-        margin: 0px 300px;
-    }
 }
 @media only screen and (max-width: 1024px) {
     .navbar .left{
@@ -521,7 +524,10 @@ body,html{
         padding: 12px 400px 12px 40px;
     }
     .sidebar .sidebar-link{
-        width: 90px;
+        width: 70px;
+    }
+    .about .sidebar-link p{
+        font-size: 12px;
     }
     .about .left{
         width: 50%;
@@ -569,9 +575,6 @@ body,html{
         width: 300px;
         height: 200px;
     }
-    .footer .container{
-        margin: 0px 200px;
-    }
 }
 @media only screen and (max-width: 768px) {
     .navbar .left{
@@ -612,6 +615,13 @@ body,html{
     .slideshow .fade {
         margin-left: 50px;
     }
+    .best-seller .card {
+        width: 250px;
+    }
+    .best-seller .card-img {
+        width: 100%;
+        height: 250px;
+    }
     .templates1 ,.templates2, .templates3, .templates4, .templates5{
         width: 200px;
     }
@@ -629,9 +639,6 @@ body,html{
     .description .container img{
         width: 300px;
         height: 200px;
-    }
-    .footer .container{
-        margin: 0px 200px;
     }
 }
 @media only screen and (max-width: 425px) {
@@ -656,10 +663,16 @@ body,html{
     .sidebar .sidebar-link{
         width: 70px;
     }
-    .about .heading{
-        margin-top: -150px;
-        margin-right: 0px;
-        margin-left: 10px;
+    .about .container{
+        flex-direction: column;
+        margin: 0px 30px;
+    }
+    .about .left{
+        width: 100%;
+    }
+    .about .heading {
+        margin: 0;
+        min-height: 0vh;
     }
     .about .heading h1{
         margin-top: 150px;
@@ -677,8 +690,8 @@ body,html{
         font-size: 15px;
     }
     .about .right{
-        margin-top: -100px;
-        margin-left: -30px;
+        margin: 0;
+        width: 100%;
     }
     .about .right img{
         width: 300px;
@@ -691,6 +704,28 @@ body,html{
     }
     .recipes{
         margin: 20px;
+    }
+    .best-seller .card {
+        width: 150px;
+    }
+    .best-seller .card-img {
+        width: 100%;
+        height: 150px;
+    }
+    .best-seller .item-details .item-name{
+        height: 60px;
+    }
+    .best-seller .item-details .item-name h3 {
+        font-size: 14px;
+    }
+    .amount label {
+        font-size: 14px;
+    }
+    .amount select {
+        font-size: 12px;
+    }
+    .best-seller .price p {
+        font-size: 14px;
     }
     .templates{
         margin: 20px;
@@ -709,15 +744,43 @@ body,html{
     .description{
         margin: 10px;
     }
+    .description p {
+        font-size: 18px;
+    }
     .description .cards {
         margin-left: 10px;
     }
-    .footer .container{
-        margin: 0px 20px;
+    .footer {
+        padding: 20px 30px;
+    }
+    .footer .left img{
+        width: 70px;
+    }
+    .footer .left h1{
+        font-size: 18px;
+        text-align: center;
+    }
+    .footer .right{
+        display: flex;
+        align-items: center;
+    }
+    .footer .right a {
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .footer .bottom {
+        flex-direction: column-reverse;
+    }
+    .footer .bottom .left p{
+        font-size: 14px;
     }
 }
 
 @media only screen and (max-width: 375px) {
+    .scroll-up-btn.show {
+        display: none;
+    }
     .navbar{
         height: 75px;
     }
@@ -736,13 +799,7 @@ body,html{
     .sidebar .sidebar-link{
         width: 50px;
     }
-    .about .heading{
-        margin-top: -150px;
-        margin-right: 0px;
-        margin-left: 10px;
-    }
     .about .heading h1{
-        margin-top: 150px;
         font-size: 30px;
     }
     .about .heading h3{
@@ -755,13 +812,6 @@ body,html{
         width: 120px;
         height: 35px;
         font-size: 15px;
-    }
-    .about .right{
-        margin-top: -100px;
-        margin-left: 10px;
-    }
-    .about .right img{
-        width: 200px;
     }
     .slideshow .fade {
         margin-left: 35px;
@@ -792,7 +842,19 @@ body,html{
     .description .cards {
         margin-left: 10px;
     }
-    .footer .container{
-        margin: 0px 20px;
+    .footer{
+        padding: 10px;
+    }
+    .footer .left img {
+        width: 50px;
+    }
+    .footer .left h1 {
+        font-size: 14px;
+    }
+    .footer .right a {
+        font-size: 12px;
+    }
+    .footer .bottom .left p{
+        font-size: 12px;
     }
 }

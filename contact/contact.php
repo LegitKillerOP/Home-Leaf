@@ -47,7 +47,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                     <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
                 </div>
                 <div class="user">
-                    <a href="../login.php"><i class='bx bx-user-circle'></i></a>
+                    <a href="../user/logined-user.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
         </div>
@@ -73,31 +73,34 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
             </form>
         </div>
     </main>
-    
+        
     <footer>
-        <div class="footer">
-            <div class="heading">
-                <img src="../images/Logo.png" alt="Logo">
-                <h1>Home Leaf</h1>
-            </div>
-            <div class="container">
-                <div class="left">
-                    <a href="../index.html">About Us</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms And Conditions</a>
-                    <a href="../contact/contact.php">Contact Us</a>
-                    <a href="../faqs/FAQ.html">FAQs</a>
+            <div class="footer">
+                <div class="container">
+                    <div class="left">
+                        <img src="../images/Logo.png" alt="Logo">
+                        <h1>Home Leaf</h1>
+                    </div>
+                    <div class="right">
+                        <a href="../index.php">About Us</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms And Conditions</a>
+                        <a href="../contact/contact.php">Contact Us</a>
+                        <a href="../faqs/FAQ.html">FAQs</a>
+                    </div>
                 </div>
-                <div class="right">
-                    <a href="https://www.instagram.com/home._.leaf/" target="_blank"><i class="bx bxl-instagram"></i> Instagram</a>
-                    <a href="#"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
+                <hr>
+                <div class="bottom">
+                    <div class="left">
+                        <p>© 2024 Home Leaf - All rights reserved</p>
+                    </div>
+                    <div class="right">
+                        <a href="https://www.instagram.com/home._.leaf/" target="_blank"><i class="bx bxl-instagram"></i></a>
+                        <a href="#"><i class="bx bxl-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>© 2024 Home Leaf - All rights reserved</p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
 </body>
 </html>
