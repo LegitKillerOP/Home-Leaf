@@ -90,7 +90,7 @@ require_once "../config.php";
                         <div class="content">
                             <div class="name">
                                 <p>Username</p>   
-                                <h3><?php echo htmlspecialchars($_SESSION["username"]); ?></h3>
+                                <h4><?php echo htmlspecialchars($_SESSION["username"]); ?></h4>
                             </div>
                             <div class="email">
                                 <p>Email</p>
@@ -158,7 +158,6 @@ require_once "../config.php";
             <div class="right">
                 <div class="heading">
                     <h1>Your Profile</h1>
-                    <p>Your profile preferences help us personalise recommendations for you.</p>
                 </div>
                 <div class="about-you">
 

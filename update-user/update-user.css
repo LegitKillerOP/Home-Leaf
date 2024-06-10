@@ -250,54 +250,105 @@ input[type="file"]:focus {
   .footer .bottom .right a:hover {
     color: #007bff;
   }
-@media only screen and (max-width: 1024px) {
+
+  @media only screen and (max-width: 1024px) {
     .navbar .left{
-        margin-left: 0px;
+      margin-left: 0px;
     }
-    .navbar .searchbox input{
-        width: 600px;
+    .navbar .searchbox input {
+      padding: 12px 400px 12px 40px;
     }
-    .footer .container{
-        margin: 0px 200px;
+    .nav2 .container {
+      gap: 50px;
     }
-}
-@media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 768px) {
     .navbar .left{
-        margin-left: 0px;
+      margin-left: 0px;
     }
-    .navbar .searchbox input{
-        width: 400px;
+    .navbar .searchbox input {
+      padding: 12px 200px 12px 40px;
     }
-    .footer .container{
-        margin: 0px 200px;
+    .nav2 .container {
+      gap: 40px;
     }
-}
-@media only screen and (max-width: 425px) {
+    .nav2 .container .dropbtn {
+      width: 160px;
+      font-size: 12px;
+    }
+    .nav2 .container .others a {
+      font-size: 12px;
+    }
+    .footer .right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  @media only screen and (max-width: 425px) {
     .navbar{
-        height: 60px;
+        height: 110px;
+    }
+    .navbar .container {
+        gap: 10px;
     }
     .navbar .left img {
-        width: 60px;
-        margin-left: -15px;
+        width: 50px;
     }
-    .searchbox i{
-        font-size: 20px;
-        height: 20px;
-    }
-    .navbar .searchbox input{
-        width: 200px;
-    }
-    .searchbox input {
-        font-size: 18px;
-        height: 20px;
+    .navbar .searchbox input {
+        padding: 12px 00px 12px 40px;
     }
     .navbar .right{
-        gap: 15px;
+        gap: 10px;
     }
     .navbar .right i {
         font-size: 35px;
     }
-    .footer .container{
-        margin: 0px 20px;
+    .nav2 .others{
+      display: none;
     }
-}
+    .footer {
+        padding: 20px 30px;
+    }
+    .footer .left img{
+        width: 70px;
+    }
+    .footer .left h1{
+        font-size: 18px;
+        text-align: center;
+    }
+    .footer .right{
+        display: flex;
+        align-items: center;
+    }
+    .footer .right a {
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    .footer .bottom {
+        flex-direction: column-reverse;
+    }
+    .footer .bottom .left p{
+        font-size: 14px;
+    }
+  }
+  
+  @media only screen and (max-width: 375px) {
+    .footer{
+        padding: 10px;
+    }
+    .footer .left img {
+        width: 50px;
+    }
+    .footer .left h1 {
+        font-size: 14px;
+    }
+    .footer .right a {
+        font-size: 12px;
+    }
+    .footer .bottom .left p{
+        font-size: 12px;
+    }
+  }
+  

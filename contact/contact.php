@@ -30,7 +30,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
     <div class="scroll-up-btn show">
         <i class='bx bx-chevron-up'></i>
     </div>
-
+    
     <nav class="navbar">
         <div class="container">
             <div class="left">
@@ -50,6 +50,34 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                     <a href="../user/logined-user.php"><i class='bx bx-user-circle'></i></a>
                 </div>
             </div>
+        </div><div class="nav2">
+            <div class="container">
+                <div class="dropdown">
+                    <button class="dropbtn">Shop with category ▼</button>
+                    <div class="dropdown-content">
+                        <a href="../fruits-vegitables/fruits-vegitables.html">Fruit & Vegetable</a>
+                        <a href="#">Foodgrains, Oil & Masala</a>
+                        <a href="#">Bakery, Cakes & Dairy</a>
+                        <a href="#">Beverages</a>
+                        <a href="#">Snacks</a>
+                    </div>
+                </div>
+                <div class="others">
+                    <a href="">Exotic Fruits & Veggies</a>
+                </div>
+                <div class="others">
+                    <a href="">Tea</a>
+                </div>
+                <div class="others">
+                    <a href="">Ghee</a>
+                </div>
+                <div class="others">
+                    <a href="">Fresh Vegetables</a>
+                </div>
+                <div class="others">
+                    <a href="">Milk</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -65,7 +93,7 @@ $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
                 <label for="email">Your Email:</label>
                 <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
 
-                <textarea name="message" required></textarea>
+                <textarea name="message" placeholder="Message" required></textarea>
 
                 <div class="h-captcha" data-captcha="true"></div>
 

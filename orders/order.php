@@ -39,24 +39,53 @@ if ($stmt = mysqli_prepare($link, $sql)) {
     </div>
 
     <nav class="navbar">
-        <div class="container">
-            <div class="left">
-                <div class="logo">
-                    <a href="../index.php"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
-                </div>
-            </div>
-            <div class="check-out-text">   
-                <h1>Checkout</h1>
-            </div>
-            <div class="right">
-                <div class="cart">
-                    <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
-                </div>
-                <div class="user">
-                    <a href="../user/logined-user.php"><i class='bx bx-user-circle'></i></a>
-                </div>
+    <div class="container">
+        <div class="left">
+            <div class="logo">
+                <a href="../index.php"><img src="../images/Logo.png" alt="Logo" draggable="false"></a>
             </div>
         </div>
+        <div class="searchbox">   
+            <input placeholder="Search for groceries" class="desktop-searchBar" value=""
+            data-reactid="904">
+        </div>
+        <div class="right">
+            <div class="cart">
+                <a href="../cart/cart.php"><i class='bx bx-cart'></i></a>
+            </div>
+            <div class="user">
+                <a href="../user/logined-user.php"><i class='bx bx-user-circle'></i></a>
+            </div>
+        </div>
+    </div><div class="nav2">
+        <div class="container">
+            <div class="dropdown">
+                <button class="dropbtn">Shop with category ▼</button>
+                <div class="dropdown-content">
+                    <a href="../fruits-vegitables/fruits-vegitables.html">Fruit & Vegetable</a>
+                    <a href="#">Foodgrains, Oil & Masala</a>
+                    <a href="#">Bakery, Cakes & Dairy</a>
+                    <a href="#">Beverages</a>
+                    <a href="#">Snacks</a>
+                </div>
+            </div>
+            <div class="others">
+                <a href="">Exotic Fruits & Veggies</a>
+            </div>
+            <div class="others">
+                <a href="">Tea</a>
+            </div>
+            <div class="others">
+                <a href="">Ghee</a>
+            </div>
+            <div class="others">
+                <a href="">Fresh Vegetables</a>
+            </div>
+            <div class="others">
+                <a href="">Milk</a>
+            </div>
+        </div>
+    </div>
     </nav>
 
     <div class="order">
