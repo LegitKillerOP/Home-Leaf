@@ -167,7 +167,7 @@ function displayReviews($link, $item_id) {
                     <button onclick="addToCart(this)">Add to Cart</button>
                 </div>
                 <div class="buy-btn">
-                    <a href="../../../cart/cart.php"><button>Buy Now</button></a>
+                    <button onclick="quickCheckout(this)">Buy Now</button>
                 </div>
             </div>
         </div>

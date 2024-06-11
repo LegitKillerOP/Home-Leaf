@@ -45,3 +45,26 @@ function addToCart(button) {
   
   alert('Item added to cart!');
 }
+
+function quickCheckout(button) {
+  const item = button.closest('.item');
+  const name = item.querySelector('.heading h3').textContent;
+  const amount = item.querySelector('.amount select').value;
+  const price = parseFloat(item.querySelector('.price p').textContent.split('₹')[1]);
+  const imgSrc = item.querySelector('.img1.active img').src;
+
+  // Set the quickCheckOut cart to an empty array
+  localStorage.setItem('quickCheckOut', JSON.stringify([]));
+
+  // Create a new item object
+  const newItem = { name, amount, price, imgSrc, quantity: 1 };
+
+  // Store the new item in quickCheckOut localStorage
+  localStorage.setItem('quickCheckOut', JSON.stringify([newItem]));
+
+  // Alert the user that the item has been added for checkout
+  alert('Item added for checkout!');
+
+  // Redirect to quick-check-out.php
+  window.location.href = '../../../check-out/quick-check-out/quick-check-out.php';
+}
