@@ -60,4 +60,3 @@ function addToCart(button) {
     
     alert('Item added to cart!');
 }
-

@@ -8,7 +8,7 @@ $('.icons .img2').click(function(){
   const mainImages = document.querySelectorAll('.main-img img');
   
   icons[0].classList.remove('active');
-  icons[0].style.border = 'none';
+  icons[0].style.border = '#e0e0e0 2px solid';
   icons[1].style.border = '2px solid #ffe9b8';
   mainImages[0].style.display = 'none';
   mainImages[1].style.display = 'block';
@@ -19,7 +19,7 @@ $('.icons .img1').click(function(){
   const mainImages = document.querySelectorAll('.main-img img');
   
   icons[1].classList.remove('active');
-  icons[1].style.border = 'none';
+  icons[1].style.border = '#e0e0e0 2px solid';
   icons[0].style.border = '2px solid #ffe9b8';
   mainImages[1].style.display = 'none';
   mainImages[0].style.display = 'block';
@@ -31,10 +31,9 @@ function calculatePrice(cardId) {
   var mrpDisplay = document.getElementById('mrp1');
 
   var priceMap = {
-      '70g': { price: 14, mrp: 14 },
-      '140g': { price: 28, mrp: 28 },
-      '280g': { price: 56, mrp: 56 },
-      '420g': { price: 84, mrp: 84 }
+      '200g': { price: 80, mrp: 80 },
+      '500g': { price: 150, mrp: 150 },
+      '700g': { price: 200, mrp: 200 }
   };
 
   var selectedAmount = amountDropdown.value;
@@ -43,4 +42,28 @@ function calculatePrice(cardId) {
 
   priceDisplay.textContent = 'Price: ₹' + selectedPrice;
   mrpDisplay.textContent = '₹' + selectedMRP;
+}
+function addToCart(button) {
+  const item = button.closest('.item');
+  const name = item.querySelector('.heading h3').textContent;
+  const amount = item.querySelector('.amount select').value;
+  const price = parseFloat(item.querySelector('.price p').textContent.split('₹')[1]);
+  const imgSrc = item.querySelector('.img1.active img').src; // Get the image URL
+
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  let existingItem = cartItems.find(cartItem => cartItem.name === name && cartItem.amount === amount);
+
+  if (existingItem) {
+      // If the item already exists in the cart, increment its quantity
+      existingItem.quantity += 1;
+  } else {
+      // Otherwise, add a new item to the cart
+      const cartItem = { name, amount, price, imgSrc, quantity: 1 };
+      cartItems.push(cartItem);
+  }
+  
+  // Store updated cart in localStorage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  
+  alert('Item added to cart!');
 }

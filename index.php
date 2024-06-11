@@ -136,7 +136,7 @@
             </div>
             <div class="card-container">
             <div class="card" id="card1">
-                    <a href="items/apple/apple.html">
+                    <a href="items/best-seller/apple/apple.php">
                     <div class="card-img">
                         <img src="https://hips.hearstapps.com/hmg-prod/images/red-fresh-apple-isolated-on-white-background-royalty-free-image-1627314996.jpg">
                     </div>
@@ -165,7 +165,7 @@
                 </div>
 
                 <div class="card" id="card2">
-                    <a href="items/kissan-jam/kissan-jam.html">
+                    <a href="items/best-seller/kissan-jam/kissan-jam.php">
                     <div class="card-img">
                         <img src="https://m.media-amazon.com/images/I/61O5yWCA5gL._SX679_.jpg">
                     </div>
@@ -195,7 +195,7 @@
                 
                 <div class="card" id="card3">
                     <div class="card-img">
-                        <a href="items/amul-taza/amul-taza.html">
+                        <a href="items/best-seller/amul-taza/amul-taza.php">
                         <img src="https://m.media-amazon.com/images/I/31mfAYMQctL.jpg">
                     </div>
                     </a>
@@ -223,7 +223,7 @@
                 </div>
                 
                 <div class="card" id="card4">
-                        <a href="items/maggie/maggie.html">
+                        <a href="items/best-seller/maggie/maggie.php">
                     <div class="card-img">
                         <img src="https://m.media-amazon.com/images/I/51+n-hxLK9L._SY300_SX300_.jpg">
                     </div>
@@ -253,7 +253,7 @@
                 </div>
 
                 <div class="card" id="card5">
-                    <a href="items/fortune-refined-soyabean-oil/fortune-refined-soyabean-oil.html">
+                    <a href="items/best-seller/fortune-refined-soyabean-oil/fortune-refined-soyabean-oil.php">
                     <div class="card-img">
                         <img src="https://www.jiomart.com/images/product/original/490005534/fortune-refined-soyabean-oil-1-l-product-images-o490005534-p490005534-0-202203151702.jpg">
                     </div>
